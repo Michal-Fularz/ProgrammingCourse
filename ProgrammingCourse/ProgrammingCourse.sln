@@ -9,6 +9,10 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "IOCCC", "IOCCC\IOCCC.vcxpro
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DynamicDataStructures", "DynamicDataStructures\DynamicDataStructures.vcxproj", "{D0C049D3-78A5-48F2-9DE0-3BC94929F8A7}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadWriteFiles", "ReadWriteFiles\ReadWriteFiles.vcxproj", "{C0BB74FA-E83E-40CC-BC84-75BD9876FC3C}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperatorsOverloading", "OperatorsOverloading\OperatorsOverloading.vcxproj", "{A1BE0204-AE88-462B-958A-BEA9571F7370}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -27,6 +31,14 @@ Global
 		{D0C049D3-78A5-48F2-9DE0-3BC94929F8A7}.Debug|Win32.Build.0 = Debug|Win32
 		{D0C049D3-78A5-48F2-9DE0-3BC94929F8A7}.Release|Win32.ActiveCfg = Release|Win32
 		{D0C049D3-78A5-48F2-9DE0-3BC94929F8A7}.Release|Win32.Build.0 = Release|Win32
+		{C0BB74FA-E83E-40CC-BC84-75BD9876FC3C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{C0BB74FA-E83E-40CC-BC84-75BD9876FC3C}.Debug|Win32.Build.0 = Debug|Win32
+		{C0BB74FA-E83E-40CC-BC84-75BD9876FC3C}.Release|Win32.ActiveCfg = Release|Win32
+		{C0BB74FA-E83E-40CC-BC84-75BD9876FC3C}.Release|Win32.Build.0 = Release|Win32
+		{A1BE0204-AE88-462B-958A-BEA9571F7370}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A1BE0204-AE88-462B-958A-BEA9571F7370}.Debug|Win32.Build.0 = Debug|Win32
+		{A1BE0204-AE88-462B-958A-BEA9571F7370}.Release|Win32.ActiveCfg = Release|Win32
+		{A1BE0204-AE88-462B-958A-BEA9571F7370}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
