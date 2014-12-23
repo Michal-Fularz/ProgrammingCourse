@@ -1,0 +1,6 @@
+Student:
+ name: John
+ identification number: 666
+Student:
+ name: Alice
+ identification number: 999

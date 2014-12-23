@@ -1,0 +1,9 @@
+And this's the way to do it using fprintf
+Number of writes: 7
+Value from user: 3.1400
+Value from user: 3.1400
+Value from user: 3.1400
+Value from user: 3.1400
+Value from user: 3.1400
+Value from user: 3.1400
+Value from user: 3.1400
