@@ -13,6 +13,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReadWriteFiles", "ReadWrite
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "OperatorsOverloading", "OperatorsOverloading\OperatorsOverloading.vcxproj", "{A1BE0204-AE88-462B-958A-BEA9571F7370}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Cplusplus11", "Cplusplus11\Cplusplus11.vcxproj", "{FD879CDC-5A63-4933-BB07-4DFD863A50F9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Win32 = Debug|Win32
@@ -39,6 +41,10 @@ Global
 		{A1BE0204-AE88-462B-958A-BEA9571F7370}.Debug|Win32.Build.0 = Debug|Win32
 		{A1BE0204-AE88-462B-958A-BEA9571F7370}.Release|Win32.ActiveCfg = Release|Win32
 		{A1BE0204-AE88-462B-958A-BEA9571F7370}.Release|Win32.Build.0 = Release|Win32
+		{FD879CDC-5A63-4933-BB07-4DFD863A50F9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FD879CDC-5A63-4933-BB07-4DFD863A50F9}.Debug|Win32.Build.0 = Debug|Win32
+		{FD879CDC-5A63-4933-BB07-4DFD863A50F9}.Release|Win32.ActiveCfg = Release|Win32
+		{FD879CDC-5A63-4933-BB07-4DFD863A50F9}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
