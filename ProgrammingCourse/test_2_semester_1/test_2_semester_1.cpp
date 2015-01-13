@@ -28,7 +28,7 @@ int main(void)
 			break;
 		case '2':
 			{
-
+				exercise_2();
 			}
 			break;
 		case '3':

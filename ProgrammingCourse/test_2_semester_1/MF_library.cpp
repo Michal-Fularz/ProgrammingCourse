@@ -41,3 +41,63 @@ void exercise_1(void)
 
 	cout << "Data from file:" << endl << inputData.decimalValue << "\t" << inputData.floatingpointValue << "\t" << inputData.logicalValue << "\t" << inputData.singleSign << "\t" << inputData.text << endl;
 }
+
+void showBook(const SBook& book)
+{
+	cout << "Book: " << endl << "title: \"" << book.title << "\", number of pages: " << book.numberOfPages << ", published in: " << book.yearOfPublish << endl;
+}
+
+void setBook(SBook& book, char title[20], int numberOfPages, int yearOfPublish)
+{
+	strcpy(book.title, title);
+	book.numberOfPages = numberOfPages;
+	book.yearOfPublish = yearOfPublish;
+}
+
+bool isBookThick(const SBook& book)
+{
+	if (book.numberOfPages > 500)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+}
+
+#include <stack>
+
+void exercise_2(void)
+{
+	stack<SBook> stackOfBooks;
+
+	for (int i = 0; i<3; i++)
+	{
+		char title[20];
+		int numberOfPages;
+		int yearOfPublish;
+
+		cout << "Specify book title:\t";
+		cin >> title;
+		cout << "Specify number of pages:\t";
+		cin >> numberOfPages;
+		cout << "Specify in which year the book was published:\t";
+		cin >> yearOfPublish;
+		SBook book;
+		setBook(book, title, numberOfPages, yearOfPublish);
+		if (isBookThick(book))
+		{
+			stackOfBooks.push(book);
+		}
+	}
+
+	for (int i = 0; i<3; i++)
+	{
+		if (!stackOfBooks.empty())
+		{
+			showBook(stackOfBooks.top());
+			stackOfBooks.pop();
+		}
+	}
+}
