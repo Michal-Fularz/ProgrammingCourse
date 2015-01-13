@@ -8,6 +8,7 @@ struct SComplexNumber
 	int Im;
 
 	SComplexNumber operator+(const SComplexNumber& n2);
+	SComplexNumber operator!();
 	friend ostream& operator<<(ostream& output, const SComplexNumber& n);
 	friend istream& operator>>(istream& input, SComplexNumber& n);
 };
@@ -45,6 +46,16 @@ SComplexNumber SComplexNumber::operator+(const SComplexNumber& n2)
 	return result;
 }
 
+SComplexNumber SComplexNumber::operator!()
+{
+	SComplexNumber result;
+
+	result.Im = this->Re;
+	result.Re = this->Im;
+	
+	return result;
+}
+
 ostream& operator<<(ostream& output, const SComplexNumber& n)
 {
 	output << "Complex number: " << n.Re << " + " << n.Im << "j" << endl;
@@ -79,6 +90,9 @@ int main(void)
 	cin >> complexNumber1 >> complexNumber2;
 	complexNumberSum = complexNumber1 + complexNumber2;
 	cout << complexNumber1 << complexNumber2 << "Sum of the above complex numbers is: " << endl << complexNumberSum;
+
+	// operator !
+	cout << "Original: " << complexNumberSum << ", after operator !: " << !complexNumberSum << endl;
 
 	std::cout << "Press enter to continue..." << std::endl;
 	std::cin.sync(); // Flush The Input Buffer Just In Case
