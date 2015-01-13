@@ -33,7 +33,7 @@ int main(void)
 			break;
 		case '3':
 			{
-
+				exercise_3();
 			}
 			break;
 		case '4':

@@ -101,3 +101,54 @@ void exercise_2(void)
 		}
 	}
 }
+
+SVector SVector::operator+(const SVector& rightOperand)
+{
+	SVector result;
+	result.x = this->x + rightOperand.x;
+	result.y = this->y + rightOperand.y;
+	return result;
+}
+
+SVector SVector::operator-(const SVector& rightOperand)
+{
+	SVector result;
+	result.x = this->x - rightOperand.x;
+	result.y = this->y - rightOperand.y;
+	return result;
+}
+
+void showVector(SVector vector)
+{
+	cout << "Vector values:\tx: " << vector.x << "\ty: " << vector.y << endl;
+}
+
+void setVector(SVector &vector, int x, int y)
+{
+	vector.x = x;
+	vector.y = y;
+}
+
+void exercise_3(void)
+{
+	cout << "Specify the number of elements:\t";
+	int sizeOfTable;
+	cin >> sizeOfTable;
+	SVector* vectorTable = new SVector[sizeOfTable];
+	for (int i = 0; i<sizeOfTable; i++)
+	{
+		setVector(vectorTable[i], rand() % 10, rand() % 10);
+	}
+	for (int i = 0; i<sizeOfTable; i++)
+	{
+		showVector(vectorTable[i]);
+	}
+	SVector sumOfVectors;
+	setVector(sumOfVectors, 0, 0);
+	for (int i = 0; i<sizeOfTable; i++)
+	{
+		sumOfVectors = sumOfVectors + vectorTable[i];
+	}
+	showVector(sumOfVectors);
+	delete[] vectorTable;
+}

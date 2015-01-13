@@ -23,10 +23,17 @@ struct SBook
 	int yearOfPublish;
 };
 
-void showBook(const SBook& book);
-void setBook(SBook& book, char title[20], int numberOfPages, int yearOfPublish);
-bool isBookThick(const SBook& book);
-
 void exercise_2(void);
+
+struct SVector
+{
+	int x;
+	int y;
+
+	SVector operator+(const SVector&);
+	SVector operator-(const SVector&);
+};
+
+void exercise_3(void);
 
 #endif
