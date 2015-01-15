@@ -177,7 +177,7 @@ void exercise_4(void)
 {
 	list<SStudent> listOfStudents;
 	cout << "Podaj studentow:" << endl;
-	for (int i = 0; i < 5; ++i)
+	for (int i = 0; i < 2; ++i)
 	{
 		SStudent newStudent;
 		cin >> newStudent.firstName;
@@ -189,7 +189,7 @@ void exercise_4(void)
 
 	listOfStudents.sort(compareGradesProgramming);
 
-	for each (auto var in listOfStudents)
+	for (auto var : listOfStudents)
 	{
 		cout << var.firstName << " " << var.lastName << ": " << var.gradeProgramming << endl;
 	}
@@ -202,9 +202,7 @@ void exercise_4(void)
 	{
 		if (strcmp((*itr).firstName, firstNameOfStudentsToDelete) == 0)
 		{
-			auto itemToDelete = itr;
-			++itr;
-			listOfStudents.erase(itemToDelete);
+			itr = listOfStudents.erase(itr);
 		}
 		else
 		{
