@@ -217,3 +217,73 @@ void exercise_4(void)
 		cout << var.firstName << " " << var.lastName << ": " << var.gradeProgramming << endl;
 	}
 }
+
+SFraction SFraction::operator*(const SFraction& f2)
+{
+	SFraction result;
+	result.denominator = this->denominator * f2.denominator;
+	result.nominator = this->nominator * f2.nominator;
+
+	return result;
+}
+
+SFraction Reduce(const SFraction& f)
+{
+	bool flagEnd = false;
+
+	SFraction reducedFraction;
+	reducedFraction.denominator = f.denominator;
+	reducedFraction.nominator = f.nominator;
+
+	int i = 2;
+	while (flagEnd == false)
+	{
+		if (i <= reducedFraction.denominator && i <= reducedFraction.nominator)
+		{
+			if ((reducedFraction.denominator%i == 0) && (reducedFraction.nominator%i == 0))
+			{
+				reducedFraction.denominator = reducedFraction.denominator / i;
+				reducedFraction.nominator = reducedFraction.nominator / i;
+				i = 2;
+			}
+			else
+			{
+				i++;
+			}
+		}
+		else
+		{
+			flagEnd = true;
+		}
+	}
+
+	return reducedFraction;
+}
+
+void exercise_5(void)
+{
+	vector<SFraction> vectorOfFractions;
+
+	cout << "Specify fractions:" << endl;
+	for (int i = 0; i < 2; ++i)
+	{
+		SFraction newFraction;
+		cin >> newFraction.denominator;
+		cin >> newFraction.nominator;
+		vectorOfFractions.push_back(newFraction);
+	}
+
+	SFraction productOfFractions;
+	productOfFractions.denominator = 1;
+	productOfFractions.nominator = 1;
+	for each (auto var in vectorOfFractions)
+	{
+		productOfFractions = productOfFractions * var;
+	}
+
+	cout << productOfFractions.denominator << "/" << productOfFractions.nominator << endl;
+
+	SFraction reducedFraction = Reduce(productOfFractions);
+
+	cout << reducedFraction.denominator << "/" << reducedFraction.nominator << endl;
+}

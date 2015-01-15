@@ -43,6 +43,11 @@ int main(void)
 				exercise_4();
 			}
 			break;
+		case '5':
+			{
+				exercise_5();
+			}
+			break;
 		case 'x':
 		case 'X':
 			cout << "Bye, bye, you will be missed!" << endl;

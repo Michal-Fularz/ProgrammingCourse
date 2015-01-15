@@ -44,4 +44,16 @@ struct SStudent
 };
 
 void exercise_4(void);
+
+struct SFraction
+{
+	int denominator;
+	int nominator;
+
+	SFraction operator*(const SFraction&);
+};
+
+void exercise_5(void);
+
+
 #endif
