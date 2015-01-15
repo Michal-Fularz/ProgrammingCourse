@@ -36,4 +36,12 @@ struct SVector
 
 void exercise_3(void);
 
+struct SStudent
+{
+	char firstName[10];
+	char lastName[10];
+	double gradeProgramming;
+};
+
+void exercise_4(void);
 #endif

@@ -6,19 +6,21 @@ using namespace std;
 #include <stdlib.h>
 #include <time.h>
 
+
+
 int main(void)
 {
 	srand(time(NULL));
 
 	cout << "Test 2 semester 2" << endl << "Author: Micha Fularz" << endl << endl << endl;
 
-	char znak = '0';
+	char sign = '0';
 
 	do
 	{
 		showMenu();
-		znak = chooseOption();
-		switch (znak)
+		sign = chooseOption();
+		switch (sign)
 		{
 		case '1':
 			{
@@ -38,6 +40,7 @@ int main(void)
 			break;
 		case '4':
 			{
+				exercise_4();
 			}
 			break;
 		case 'x':
@@ -48,7 +51,7 @@ int main(void)
 			cout << "Wrong choice. You die." << endl;
 			break;
 		}
-	} while (znak != 'x' && znak != 'X');
+	} while (sign != 'x' && sign != 'X');
 
 	std::cin.sync();		// Flush The Input Buffer Just In Case
 	std::cin.ignore();		// There's No Need To Actually Store The Users Input

@@ -3,12 +3,18 @@
 #include <iostream>
 using namespace std;
 
+#include <stack>
+#include <list>
+#include <vector>
+
 void showMenu(void)
 {
 	cout << endl << "MENU:" << endl;
 	cout << "exercise 1 - press 1" << endl;
 	cout << "exercise 2 - press 2" << endl;
 	cout << "exercise 3 - press 3" << endl;
+	cout << "exercise 4 - press 4" << endl;
+	cout << "exercise 5 - press 5" << endl;
 	cout << "exit - press x or X" << endl;
 }
 
@@ -65,8 +71,6 @@ bool isBookThick(const SBook& book)
 		return false;
 	}
 }
-
-#include <stack>
 
 void exercise_2(void)
 {
@@ -151,4 +155,65 @@ void exercise_3(void)
 	}
 	showVector(sumOfVectors);
 	delete[] vectorTable;
+}
+
+bool compareGradesProgramming(SStudent& s1, SStudent s2)
+{
+	bool result;
+
+	if (s1.gradeProgramming < s2.gradeProgramming)
+	{
+		result = true;
+	}
+	else
+	{
+		result = false;
+	}
+
+	return result;
+}
+
+void exercise_4(void)
+{
+	list<SStudent> listOfStudents;
+	cout << "Podaj studentow:" << endl;
+	for (int i = 0; i < 5; ++i)
+	{
+		SStudent newStudent;
+		cin >> newStudent.firstName;
+		cin >> newStudent.lastName;
+		cin >> newStudent.gradeProgramming;
+
+		listOfStudents.push_back(newStudent);
+	}
+
+	listOfStudents.sort(compareGradesProgramming);
+
+	for each (auto var in listOfStudents)
+	{
+		cout << var.firstName << " " << var.lastName << ": " << var.gradeProgramming << endl;
+	}
+
+	char firstNameOfStudentsToDelete[10];
+	cout << "Specify the name of students to remove" << endl;
+	cin >> firstNameOfStudentsToDelete;
+
+	for (auto itr = listOfStudents.begin(); itr != listOfStudents.end();)
+	{
+		if (strcmp((*itr).firstName, firstNameOfStudentsToDelete) == 0)
+		{
+			auto itemToDelete = itr;
+			++itr;
+			listOfStudents.erase(itemToDelete);
+		}
+		else
+		{
+			++itr;
+		}
+	}
+
+	for each (auto var in listOfStudents)
+	{
+		cout << var.firstName << " " << var.lastName << ": " << var.gradeProgramming << endl;
+	}
 }
