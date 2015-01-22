@@ -514,14 +514,6 @@ struct punkt
 #include <list>
 void Pytanie_IteratoryWListach(void)
 {
-	//punkt nowy;
-	//   list<punkt> lista;
-	//   list<punkt>::iterator itr;
-
-	//cin>>nowy.adres;
-	//   cin>>nowy.nazwa;
-	//   cin>>nowy.numer;
-
 	int nowy;
 	list<int> lista;
 	list<int>::iterator itr;

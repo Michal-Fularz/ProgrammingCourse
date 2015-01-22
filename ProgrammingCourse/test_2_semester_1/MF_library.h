@@ -1,6 +1,9 @@
 #ifndef __MF_LIBRARY_H__
 #define __MF_LIBRARY_H__
 
+#include <istream>
+#include <ostream>
+
 void showMenu(void);
 char chooseOption(void);
 
@@ -54,6 +57,23 @@ struct SFraction
 };
 
 void exercise_5(void);
+
+struct STime
+{
+	int hours;
+	int minutes;
+	int seconds;
+
+	STime operator+(const STime&);
+	STime operator-(const STime&);
+	friend std::istream& operator>>(std::istream& output, const STime& t);
+	friend std::ostream& operator<<(std::ostream& output, const STime& t);
+};
+
+void exercise_6(void);
+void exercise_7(void);
+void exercise_8(void);
+void exercise_9(void);
 
 
 #endif

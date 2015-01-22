@@ -7,6 +7,11 @@ using namespace std;
 #include <list>
 #include <vector>
 
+#include <istream>
+#include <ostream>
+
+#include <fstream>
+
 void showMenu(void)
 {
 	cout << endl << "MENU:" << endl;
@@ -284,4 +289,228 @@ void exercise_5(void)
 	SFraction reducedFraction = Reduce(productOfFractions);
 
 	cout << reducedFraction.denominator << "/" << reducedFraction.nominator << endl;
+}
+
+STime STime::operator+(const STime& t2)
+{
+	STime result;
+	result.hours = this->hours + t2.hours;
+	result.minutes = this->minutes + t2.minutes;
+	result.seconds = this->seconds + t2.seconds;
+
+	return result;
+}
+
+STime STime::operator-(const STime& t2)
+{
+	STime result;
+	result.hours = this->hours - t2.hours;
+	result.minutes = this->minutes - t2.minutes;
+	result.seconds = this->seconds - t2.seconds;
+
+	return result;
+}
+
+std::istream& operator>>(std::istream& input, STime& t)
+{
+	cout << "Provide hours: ";
+	input >> t.hours;
+	cout << "Provide minutes: ";
+	input >> t.minutes;
+	cout << "Provide seconds: ";
+	input >> t.seconds;
+
+	return input;
+}
+
+std::ostream& operator<<(std::ostream& output, const STime& t)
+{
+	int minutesFromSeconds = t.seconds / 60;
+	int seconds = t.seconds % 60;
+
+	int minutesRaw = t.minutes + minutesFromSeconds;
+
+	int hoursFromMinutes = minutesRaw / 60;
+	int minutes = minutesRaw % 60;
+
+	int hours = t.hours + hoursFromMinutes;
+
+
+	output << "Time: " << hours << "h, " << minutes << "min, " << seconds << "seconds";
+
+	return output;
+}
+
+STime* createTableOfTimes(int size)
+{
+	STime* tableOfTimes = new STime[size];
+
+	for (int i = 0; i < size; ++i)
+	{
+		std::cin >> tableOfTimes[i];
+	}
+
+	return tableOfTimes;
+}
+
+void exercise_6(void)
+{
+	std::cout << "Specify the size of table of times to create: ";
+	int size;
+	std::cin >> size;
+	STime* tableOfTimes = createTableOfTimes(size);
+
+	for (int i = 0; i < size; ++i)
+	{
+		std::cout << tableOfTimes[i] << endl;
+	}
+
+	delete[] tableOfTimes;
+}
+
+void exercise_7(void)
+{
+	STime t1, t2;
+	std::cin >> t1;
+	std::cin >> t2;
+
+	std::cout << "Time 1: " << t1 << std::endl;
+	std::cout << "Time 2: " << t2 << std::endl;
+	std::cout << "Sum: " << t1 + t2 << std::endl;
+	std::cout << "Difference: " << t1 - t2 << std::endl;
+}
+
+bool compareTimesByHours(const STime& t1, const STime& t2)
+{
+	bool result;
+
+	if (t1.hours < t2.hours)
+	{
+		result = true;
+	}
+	else
+	{
+		result = false;
+	}
+
+	return result;
+}
+
+bool compareTimesByMinutes(const STime& t1, const STime& t2)
+{
+	bool result;
+
+	if (t1.minutes < t2.minutes)
+	{
+		result = true;
+	}
+	else
+	{
+		result = false;
+	}
+
+	return result;
+}
+
+STime generateRandomTime()
+{
+	STime newTime;
+	newTime.hours = rand() % 5;
+	newTime.minutes = rand() % 60;
+	newTime.seconds = rand() % 60;
+
+	return newTime;
+}
+
+void exercise_8(void)
+{
+	std::list<STime> listOfTimes;
+
+	const int size = 5;
+	for (int i = 0; i < size; ++i)
+	{
+		listOfTimes.push_back(generateRandomTime());
+	}
+
+	std::cout << "Specify type of sorting (1 - by hours, 2 - by minutes): ";
+	int typeOfSorting;
+	std::cin >> typeOfSorting;
+
+	if (typeOfSorting == 1)
+	{
+		listOfTimes.sort(compareTimesByHours);
+	}
+	else if (typeOfSorting == 2)
+	{
+		listOfTimes.sort(compareTimesByMinutes);
+	}
+
+	for (auto item : listOfTimes)
+	{
+		std::cout << item << endl;
+	}
+
+	std::cout << "Specify number of seconds (times with exact number of seconds will be removed from the list: ";
+	int numberOfSeconds;
+	std::cin >> numberOfSeconds;
+
+	for (auto itr = listOfTimes.begin(); itr != listOfTimes.end();)
+	{
+		if ((*itr).seconds == numberOfSeconds)
+		{
+			itr = listOfTimes.erase(itr);
+		}
+		else
+		{
+			++itr;
+		}
+	}
+
+	for (auto item : listOfTimes)
+	{
+		std::cout << item << endl;
+	}
+}
+
+void exercise_9(void)
+{
+	std::list<STime> listOfTimesToFile;
+	const int size = 5;
+	for (int i = 0; i < size; ++i)
+	{
+		listOfTimesToFile.push_back(generateRandomTime());
+	}
+
+	std::cout << "Generated times: " << endl;
+	for (auto item : listOfTimesToFile)
+	{
+		std::cout << item << endl;
+	}
+
+	std::ofstream outputFile("times.data", std::ios::binary);
+	for (auto item : listOfTimesToFile)
+	{
+		outputFile.write((char*)&item, sizeof(item));
+	}
+	outputFile.close();
+
+	std::list<STime> listOfTimesFromFile;
+
+	std::ifstream inputFile("times.data", std::ios::binary);
+	for (int i = 0; i < size; ++i)
+	{
+		STime timeFromFile;
+		inputFile.read((char*)&timeFromFile, sizeof(timeFromFile));
+		if (timeFromFile.hours > 2)
+		{
+			listOfTimesFromFile.push_back(timeFromFile);
+		}
+	}
+	inputFile.close();
+
+	std::cout << "Times from file: " << endl;
+	for (auto item : listOfTimesFromFile)
+	{
+		std::cout << item << endl;
+	}
 }

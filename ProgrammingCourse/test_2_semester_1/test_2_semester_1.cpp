@@ -48,6 +48,26 @@ int main(void)
 				exercise_5();
 			}
 			break;
+		case '6':
+			{
+				exercise_6();
+			}
+			break;
+		case '7':
+			{
+				exercise_7();
+			}
+			break;
+		case '8':
+			{
+				exercise_8();
+			}
+			break;
+		case '9':
+			{
+				exercise_9();
+			}
+			break;
 		case 'x':
 		case 'X':
 			cout << "Bye, bye, you will be missed!" << endl;
