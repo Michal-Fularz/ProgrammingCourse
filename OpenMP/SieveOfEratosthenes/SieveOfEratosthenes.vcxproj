@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{1E2B06CF-2E6D-40B3-9A62-91C25B1595CB}</ProjectGuid>
+    <ProjectGuid>{A12911D5-2E7D-45A4-9EA8-922F412154F7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OpenMP</RootNamespace>
+    <RootNamespace>SieveOfEratosthenes</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -78,7 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="sketchbook.cpp" />
+    <ClCompile Include="SieveOfEratosthenes.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
