@@ -1,7 +1,5 @@
 ﻿#include <iostream>
 
-using namespace std;
-
 #include <GL/freeglut.h>
 
 const int glutWindowWidth = 640;
@@ -36,10 +34,10 @@ void DrawRectangle(void)
 	double height = 0.5;
 	double width = 0.5;
 
-	// pamiętać o wcięciach przy push/pop - łatwiej znaleźć brakujące
 	glPushMatrix();
 	// TODO
-	// przetestować poniższe (glTranslated, glRotated, glColor3d) funkcje - zmienić wartości i określić za co odpowiadają
+	// test functions below (glTranslated, glRotated, glColor3d) - what happen when you change their arguments?
+	// does their order change the result?
 	glTranslated(0, 0, 0);
 	glRotated(0, 1.0, 0.0, 0.0);
 	glRotated(0, 0.0, 1.0, 0.0);
@@ -62,8 +60,6 @@ static void display(void)
 	// wyczyszenie sceny
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	//glEnable(GL_LIGHTING);
-
 	glPushMatrix();
 	DrawRectangle();
 	glPopMatrix();
@@ -73,8 +69,9 @@ static void display(void)
 
 int main(int argc, char *argv[])
 {
-	// możliwość wyświetlania tekstu w konsoli
+	// it's still possible to use console to print messages
 	printf("Hello openGL world!");
+	// the same can be done with cout / cin
 
 	glutInitWindowSize(glutWindowWidth, glutWindowHeight);
 	glutInitWindowPosition(40, 40);
@@ -86,11 +83,10 @@ int main(int argc, char *argv[])
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
-	//glutKeyboardFunc(keyboard);
-	//glutTimerFunc(25, gameLogic, 0);
 
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
 
+	// set white as clear colour
 	glClearColor(1, 1, 1, 1);
 
 	glEnable(GL_DEPTH_TEST);
