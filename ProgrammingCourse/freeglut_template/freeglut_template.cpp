@@ -7,6 +7,8 @@ const int glutWindowHeight = 480;
 
 float proportion = (float)glutWindowWidth / (float)glutWindowHeight;
 
+double rectanglePositionX = 0.0;
+
 /* GLUT callback Handlers */
 static void resize(int width, int height)
 {
@@ -38,7 +40,7 @@ void DrawRectangle(void)
 	// TODO
 	// test functions below (glTranslated, glRotated, glColor3d) - what happen when you change their arguments?
 	// does their order change the result?
-	glTranslated(0, 0, 0);
+	glTranslated(rectanglePositionX, 0, 0);
 	glRotated(0, 1.0, 0.0, 0.0);
 	glRotated(0, 0.0, 1.0, 0.0);
 	glRotated(0, 0.0, 0.0, 1.0);
@@ -67,6 +69,14 @@ static void display(void)
 	glutSwapBuffers();
 }
 
+void keyboard(unsigned char key, int x, int y)
+{
+	if (key == 'w')
+	{
+		rectanglePositionX += 0.1;
+	}
+}
+
 int main(int argc, char *argv[])
 {
 	// it's still possible to use console to print messages
@@ -83,6 +93,7 @@ int main(int argc, char *argv[])
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
+	glutKeyboardFunc(keyboard);
 
 	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
 
