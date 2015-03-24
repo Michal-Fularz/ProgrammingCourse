@@ -1,7 +1,5 @@
-#ifndef CTANK2_H
-#define CTANK2_H
-
-#include <GL/freeglut.h>
+#ifndef CTANK_H
+#define CTANK_H
 
 struct SPosition
 {
@@ -31,21 +29,7 @@ private:
 
 	double barrelAngle;
 
-	void DrawRectangle(double width, double height)
-	{
-		glPushMatrix();
-
-		glBegin(GL_POLYGON);
-		{
-			glVertex3d(-width / 2, height / 2, 0);
-			glVertex3d(width / 2, height / 2, 0);
-			glVertex3d(width / 2, -height / 2, 0);
-			glVertex3d(-width / 2, -height / 2, 0);
-		}
-		glEnd();
-
-		glPopMatrix();
-	}
+	void DrawRectangle(double width, double height);
 
 public:
 	CTank(double _tankWidth, double _tankHeight, double _barrelWidth, double _barrelHeight)
@@ -62,43 +46,22 @@ public:
 		this->barrelColour.red = 0.0;
 		this->barrelColour.green = 0.0;
 		this->barrelColour.blue = 0.0;
+
+		// initial position
+		this->position.x = 0.0;
+		this->position.y = 0.0;
+		this->position.z = 0.0;
+
+		this->barrelAngle = 90.0;
 	}
 
-	void Draw(void)
-	{
-		glPushMatrix();
-		glTranslated(this->position.x, this->position.y, this->position.z);
+	void Draw(void);
 
-		glPushMatrix();
-		// rysuj lufê
-		glColor3d(this->barrelColour.red, this->barrelColour.green, this->barrelColour.blue);
-		glRotated(this->barrelAngle, 0.0, 0.0, 1.0);
-		glTranslated(this->barrelWidth / 2, 0.0, 0.0);
+	// example hot to create methods that safely change the parameters and are easy to mantain
+	// method for rotating the barrel is using the Set method which do all the checking
+	void RotateBarrel(double dBarrelAngle);
 
-		this->DrawRectangle(this->barrelWidth, this->barrelHeight);
-		glPopMatrix();
-
-		glPushMatrix();
-		// rysuj podstawê
-		glColor3d(this->tankColour.red, this->tankColour.green, this->tankColour.blue);
-		DrawRectangle(this->tankWidth, this->tankHeight);
-		glPopMatrix();
-
-		glPopMatrix();
-	}
-
-	void RotateBarrel(double dBarrelAngle)
-	{
-		this->SetBarrelAngle(this->barrelAngle + dBarrelAngle);
-	}
-
-	void SetBarrelAngle(double newBarrelAngle)
-	{
-		if (newBarrelAngle >= 0 && newBarrelAngle <= 180)
-		{
-			this->barrelAngle = newBarrelAngle;
-		}
-	}
+	void SetBarrelAngle(double newBarrelAngle);
 };
 
 #endif

@@ -32,7 +32,7 @@
     <ClInclude Include="CTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CTank2.h">
+    <ClInclude Include="Tank2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
