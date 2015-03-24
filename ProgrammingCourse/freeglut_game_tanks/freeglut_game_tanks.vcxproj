@@ -78,14 +78,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CObject.cpp" />
     <ClCompile Include="CTank.cpp" />
     <ClCompile Include="freeglut_game_tanks.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CObject.h" />
     <ClInclude Include="CTank.h" />
-    <ClInclude Include="Tank2.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

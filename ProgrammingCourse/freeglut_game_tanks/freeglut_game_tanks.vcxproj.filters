@@ -18,21 +18,12 @@
     <ClCompile Include="freeglut_game_tanks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CObject.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="CTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CObject.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="CTank.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Tank2.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
