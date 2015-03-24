@@ -2,18 +2,10 @@
 
 #include <GL/freeglut.h>
 
-const int glutWindowWidth = 640;
-const int glutWindowHeight = 480;
-
-float proportion = (float)glutWindowWidth / (float)glutWindowHeight;
-
-double rectanglePositionX = 0.0;
-
 /* GLUT callback Handlers */
 static void resize(int width, int height)
 {
 	const float ar = (float)width / (float)height;
-	proportion = ar;
 
 	glViewport(0, 0, width, height);
 
@@ -31,21 +23,19 @@ static void idle(void)
 	glutPostRedisplay();
 }
 
-void DrawRectangle(void)
+void DrawRectangle(double width, double height)
 {
-	double height = 0.5;
-	double width = 0.5;
-
 	glPushMatrix();
 	// TODO
 	// test functions below (glTranslated, glRotated, glColor3d) - what happen when you change their arguments?
 	// does their order change the result?
-	glTranslated(rectanglePositionX, 0, 0);
+	glTranslated(0.0, 0.0, 0.0);
 	glRotated(0, 1.0, 0.0, 0.0);
 	glRotated(0, 0.0, 1.0, 0.0);
 	glRotated(0, 0.0, 0.0, 1.0);
 
 	glColor3d(1.0, 0.0, 0.0);
+
 	glBegin(GL_POLYGON);
 	{
 		glVertex3d(-width / 2, height / 2, 0);
@@ -59,22 +49,14 @@ void DrawRectangle(void)
 
 static void display(void)
 {
-	// wyczyszenie sceny
+	// clear the scene
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
-	DrawRectangle();
+	DrawRectangle(2.0, 1.0);
 	glPopMatrix();
 
 	glutSwapBuffers();
-}
-
-void keyboard(unsigned char key, int x, int y)
-{
-	if (key == 'w')
-	{
-		rectanglePositionX += 0.1;
-	}
 }
 
 int main(int argc, char *argv[])
@@ -83,7 +65,7 @@ int main(int argc, char *argv[])
 	printf("Hello openGL world!");
 	// the same can be done with cout / cin
 
-	glutInitWindowSize(glutWindowWidth, glutWindowHeight);
+	glutInitWindowSize(800, 600);
 	glutInitWindowPosition(40, 40);
 	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
@@ -93,11 +75,8 @@ int main(int argc, char *argv[])
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
-	glutKeyboardFunc(keyboard);
 
-	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_CONTINUE_EXECUTION);
-
-	// set white as clear colour
+	// set white as the clear colour
 	glClearColor(1, 1, 1, 1);
 
 	glEnable(GL_DEPTH_TEST);
