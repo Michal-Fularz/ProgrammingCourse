@@ -2,22 +2,6 @@
 
 #include <GL/freeglut.h>
 
-void CTank::DrawRectangle(double width, double height)
-{
-	glPushMatrix();
-
-	glBegin(GL_POLYGON);
-	{
-		glVertex3d(-width / 2, height / 2, 0);
-		glVertex3d(width / 2, height / 2, 0);
-		glVertex3d(width / 2, -height / 2, 0);
-		glVertex3d(-width / 2, -height / 2, 0);
-	}
-	glEnd();
-
-	glPopMatrix();
-}
-
 void CTank::Draw(void)
 {
 	glPushMatrix();

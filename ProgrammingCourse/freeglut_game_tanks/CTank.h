@@ -1,24 +1,11 @@
 #ifndef CTANK_H
 #define CTANK_H
 
-struct SPosition
-{
-	double x;
-	double y;
-	double z;
-};
+#include "CObject.h"
 
-struct SColour
-{
-	double red;
-	double green;
-	double blue;
-};
-
-class CTank
+class CTank : public CObject
 {
 private:
-	SPosition position;
 	SColour tankColour;
 	SColour barrelColour;
 
@@ -29,28 +16,22 @@ private:
 
 	double barrelAngle;
 
-	void DrawRectangle(double width, double height);
-
 public:
 	CTank(double _tankWidth, double _tankHeight, double _barrelWidth, double _barrelHeight)
+		: CObject()
 	{
 		this->tankWidth = _tankWidth;
 		this->tankHeight = _tankHeight;
 		this->barrelWidth = _barrelWidth;
 		this->barrelHeight = _barrelHeight;
-		// green tank
-		this->tankColour.red = 0.0;
-		this->tankColour.green = 1.0;
-		this->tankColour.blue = 0.0;
+		// default object colour tank
+		this->tankColour.red = this->objectColour.red;
+		this->tankColour.green = this->objectColour.green;
+		this->tankColour.blue = this->objectColour.blue;
 		// black barrel
 		this->barrelColour.red = 0.0;
 		this->barrelColour.green = 0.0;
 		this->barrelColour.blue = 0.0;
-
-		// initial position
-		this->position.x = 0.0;
-		this->position.y = 0.0;
-		this->position.z = 0.0;
 
 		this->barrelAngle = 90.0;
 	}
