@@ -2,6 +2,7 @@
 #define CTANK_H
 
 #include "CObject.h"
+#include <cmath>
 
 class CTank : public CObject
 {
@@ -15,6 +16,7 @@ private:
 	double barrelHeight;
 
 	double barrelAngle;
+	double bulletPower;
 
 public:
 	CTank(double _tankWidth, double _tankHeight, double _barrelWidth, double _barrelHeight)
@@ -33,7 +35,7 @@ public:
 		this->barrelColour.green = 0.0;
 		this->barrelColour.blue = 0.0;
 
-		this->barrelAngle = 90.0;
+		this->barrelAngle = 0.0;
 	}
 
 	void Draw(void);
@@ -43,6 +45,44 @@ public:
 	void RotateBarrel(double dBarrelAngle);
 
 	void SetBarrelAngle(double newBarrelAngle);
+
+	void ChangeBulletPower(double dBulletPower)
+	{
+		this->SetBulletPower(this->GetBulletPower() + dBulletPower);
+	}
+
+	void SetBulletPower(double newBulletPower)
+	{
+		if (newBulletPower >= 0 && newBulletPower < 10)
+		{
+			this->bulletPower = newBulletPower;
+		}
+	}
+
+	double GetBarrelAngle(void)
+	{
+		return this->barrelAngle;
+	}
+
+	double GetBulletPower(void)
+	{
+		return this->bulletPower;
+	}
+
+	SPosition GetPosition(void)
+	{
+		return this->position;
+	}
+
+	SPosition GetEndOfBarrelPosition(void)
+	{
+		SPosition endOfBarrel;
+		endOfBarrel.x = this->position.x + this->barrelWidth * cos(3.14 / 180 * this->barrelAngle);
+		endOfBarrel.y = this->position.y + this->barrelWidth * sin(3.14 / 180 * this->barrelAngle);
+		endOfBarrel.z = 0.0;
+
+		return endOfBarrel;
+	}
 };
 
 #endif

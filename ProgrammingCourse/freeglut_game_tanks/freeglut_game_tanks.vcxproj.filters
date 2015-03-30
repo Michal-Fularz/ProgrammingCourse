@@ -24,12 +24,18 @@
     <ClCompile Include="CObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="CBullet.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="CObject.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

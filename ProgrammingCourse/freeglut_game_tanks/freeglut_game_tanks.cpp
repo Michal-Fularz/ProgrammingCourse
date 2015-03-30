@@ -3,8 +3,11 @@
 #include <GL/freeglut.h>
 
 #include "CTank.h"
+#include "CBullet.h"
 
-CTank tank1(1.0, 0.3, 2.0, 0.7);
+CTank tank1(1.0, 0.3, 0.7, 0.2);
+CTank tank2(1.0, 0.3, 0.7, 0.2);
+CBullet bullet(0.2);
 
 /* GLUT callback Handlers */
 static void resize(int width, int height)
@@ -34,6 +37,8 @@ static void display(void)
 
 	glPushMatrix();
 	tank1.Draw();
+	tank2.Draw();
+	bullet.Draw();
 	glPopMatrix();
 
 	glutSwapBuffers();
@@ -43,12 +48,59 @@ void keyboard(unsigned char key, int x, int y)
 {
 	if (key == 'q')
 	{
-		//tank1.RotateBarrel(-5);
+		tank1.RotateBarrel(-5);
 	}
 	else if (key == 'e')
 	{
-		//tank1.RotateBarrel(5);
+		tank1.RotateBarrel(5);
 	}
+	else if (key == 'a')
+	{
+		tank1.ChangeBulletPower(1);
+		std::cout << "Bullet power: " << tank1.GetBulletPower();
+	}
+	else if (key == 'd')
+	{
+		tank1.ChangeBulletPower(-1);
+		std::cout << "Bullet power: " << tank1.GetBulletPower();
+	}
+	else if (key == 'z')
+	{
+		bullet.SetPosition(tank1.GetEndOfBarrelPosition());
+		bullet.Fire(tank1.GetBulletPower(), tank1.GetBarrelAngle());
+	}
+	else if (key == 'i')
+	{
+		tank2.RotateBarrel(-5);
+	}
+	else if (key == 'p')
+	{
+		tank2.RotateBarrel(5);
+	}
+	else if (key == 't')
+	{
+		bullet.Move(0.0, 0.1, 0.0);
+	}
+	else if (key == 'g')
+	{
+		bullet.Move(0.0, -0.1, 0.0);
+	}
+	else if (key == 'f')
+	{
+		bullet.Move(-0.1, 0.0, 0.0);
+	}
+	else if (key == 'h')
+	{
+		bullet.Move(0.1, 0.0, 0.0);
+	}
+}
+
+void gameLogic(int value)
+{
+	//bullet.Move(0.0, -0.01, 0.0);
+	bullet.Fly(9.81, 25);
+
+	glutTimerFunc(25, gameLogic, 0);
 }
 
 int main(int argc, char *argv[])
@@ -64,10 +116,14 @@ int main(int argc, char *argv[])
 
 	glutCreateWindow("OpenGLUT Shapes");
 
+	tank1.SetPosition(-2.0, -2.0, 0.0);
+	tank2.SetPosition(2.0, -2.0, 0.0);
+
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
 	glutKeyboardFunc(keyboard);
+	glutTimerFunc(25, gameLogic, 0);
 
 	// set white as clear colour
 	glClearColor(1, 1, 1, 1);

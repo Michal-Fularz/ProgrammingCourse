@@ -2,23 +2,28 @@
 #define CBULLET_H
 
 #include "CObject.h"
+#include <cmath>
 
 class CBullet : public CObject
 {
 private:
+	double size;
 
-	double bulletWidth;
-	double bulletHeight;
+	double vX;
+	double vY;
 
 public:
-	CBullet(double _bulletWidth, double _bulletHeight)
+	CBullet(double _bulletSize)
 		: CObject()
 	{
-		this->bulletWidth = _bulletWidth;
-		this->bulletHeight = _bulletHeight;
+		this->size = _bulletSize;
 	}
 
 	void Draw(void);
+
+	void Fire(double power, double angle);
+
+	void Fly(double gravityAcceleration, double timeInMs);
 };
 
 #endif

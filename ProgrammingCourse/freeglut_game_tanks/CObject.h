@@ -21,7 +21,10 @@ protected:
 	SPosition position;
 	SColour objectColour;
 
+	bool flagHidden;
+
 	void DrawRectangle(double width, double height);
+	void DrawCircle(double radius);
 
 public:
 	CObject(void)
@@ -35,9 +38,20 @@ public:
 		this->position.x = 0.0;
 		this->position.y = 0.0;
 		this->position.z = 0.0;
+
+		this->flagHidden = false;
 	}
 
-	virtual void Draw(void) {};
+	virtual void Draw(void) = 0;
+
+	void SetPosition(SPosition newPosition)
+	{
+		this->SetPosition(
+			newPosition.x,
+			newPosition.y,
+			newPosition.z
+			);
+	}
 
 	void SetPosition(double newX, double newY, double newZ)
 	{
@@ -53,7 +67,7 @@ public:
 		this->SetPosition(
 			this->position.x + dX,
 			this->position.y + dY,
-			this->position.z + dZ,
+			this->position.z + dZ
 			);
 	}
 };

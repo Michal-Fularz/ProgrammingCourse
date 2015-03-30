@@ -10,8 +10,12 @@ void CTank::Draw(void)
 	glPushMatrix();
 	// draw the barrel
 	glColor3d(this->barrelColour.red, this->barrelColour.green, this->barrelColour.blue);
+
+	//glRotated(-90, 0.0, 0.0, 1.0);
+	
 	glRotated(this->barrelAngle, 0.0, 0.0, 1.0);
 	glTranslated(this->barrelWidth / 2, 0.0, 0.0);
+	
 
 	this->DrawRectangle(this->barrelWidth, this->barrelHeight);
 	glPopMatrix();
