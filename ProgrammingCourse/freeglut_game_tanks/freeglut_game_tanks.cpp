@@ -5,9 +5,19 @@
 #include "CTank.h"
 #include "CBullet.h"
 
+// default constructor
 CTank tank1(1.0, 0.3, 0.7, 0.2);
-CTank tank2(1.0, 0.3, 0.7, 0.2);
-CBullet bullet(0.2);
+// specialized constructor 
+CTank tank2(
+	SColour(0.0, 0.0, 1.0),
+	1.0, 0.3, 
+	SColour(0.5, 0.0, 0.5),
+	0.7, 0.2
+	);
+CBullet bullet(0.125);
+
+const double gravityAcceleration = 9.81;
+const int gameLogicUpdateIntervalInMs = 25;
 
 /* GLUT callback Handlers */
 static void resize(int width, int height)
@@ -57,50 +67,28 @@ void keyboard(unsigned char key, int x, int y)
 	else if (key == 'a')
 	{
 		tank1.ChangeBulletPower(1);
-		std::cout << "Bullet power: " << tank1.GetBulletPower();
+		std::cout << "Bullet power: " << tank1.GetBulletPower() << std::endl;
 	}
 	else if (key == 'd')
 	{
 		tank1.ChangeBulletPower(-1);
-		std::cout << "Bullet power: " << tank1.GetBulletPower();
+		std::cout << "Bullet power: " << tank1.GetBulletPower() << std::endl;
 	}
 	else if (key == 'z')
 	{
-		bullet.SetPosition(tank1.GetEndOfBarrelPosition());
-		bullet.Fire(tank1.GetBulletPower(), tank1.GetBarrelAngle());
-	}
-	else if (key == 'i')
-	{
-		tank2.RotateBarrel(-5);
-	}
-	else if (key == 'p')
-	{
-		tank2.RotateBarrel(5);
-	}
-	else if (key == 't')
-	{
-		bullet.Move(0.0, 0.1, 0.0);
-	}
-	else if (key == 'g')
-	{
-		bullet.Move(0.0, -0.1, 0.0);
-	}
-	else if (key == 'f')
-	{
-		bullet.Move(-0.1, 0.0, 0.0);
-	}
-	else if (key == 'h')
-	{
-		bullet.Move(0.1, 0.0, 0.0);
+		bullet.Fire(
+			tank1.GetEndOfBarrelPosition(),
+			tank1.GetBulletPower(),
+			tank1.GetBarrelAngle()
+			);
 	}
 }
 
 void gameLogic(int value)
 {
-	//bullet.Move(0.0, -0.01, 0.0);
-	bullet.Fly(9.81, 25);
+	bullet.Fly(gravityAcceleration, gameLogicUpdateIntervalInMs);
 
-	glutTimerFunc(25, gameLogic, 0);
+	glutTimerFunc(gameLogicUpdateIntervalInMs, gameLogic, value);
 }
 
 int main(int argc, char *argv[])
@@ -123,7 +111,7 @@ int main(int argc, char *argv[])
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
 	glutKeyboardFunc(keyboard);
-	glutTimerFunc(25, gameLogic, 0);
+	glutTimerFunc(gameLogicUpdateIntervalInMs, gameLogic, 0);
 
 	// set white as clear colour
 	glClearColor(1, 1, 1, 1);
