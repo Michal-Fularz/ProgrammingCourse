@@ -5,15 +5,18 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Robocode;
+using System.Drawing;
 
 namespace MF_Robots
 {
-    class FirstBot : Robot
+    class FirstBot_colors : Robot
     {
         // The main method of your robot containing robot logics
         public override void Run()
         {
             // -- Initialization of the robot --
+
+            SetColors(System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.Black);
 
             // Here we turn the robot to point upwards, and move the gun 90 degrees
             TurnLeft(Heading - 90);
@@ -38,8 +41,15 @@ namespace MF_Robots
         // Robot event handler, when the robot sees another robot
         public override void OnScannedRobot(ScannedRobotEvent e)
         {
-            // We fire the gun with bullet power = 1
-            Fire(1);
+            // Assuming radar and gun are aligned... 
+            if (e.Distance < 100)
+            {
+                Fire(3);
+            }
+            else
+            {
+                Fire(1);
+            }
         }
     }
 }
