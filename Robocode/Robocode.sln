@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstBot_colors", "FirstBot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstBot_debug", "FirstBot_debug\FirstBot_debug.csproj", "{8E29EB68-BE92-4725-A8A7-252F04715D1A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstBot_scan", "FirstBot_scan\FirstBot_scan.csproj", "{66B1EFAD-CF6C-4C11-910F-3C59F11D9D65}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FirstBot_dodge", "FirstBot_dodge\FirstBot_dodge.csproj", "{61F7BDD2-D9DD-455D-ADC0-CC8B089CD164}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{8E29EB68-BE92-4725-A8A7-252F04715D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8E29EB68-BE92-4725-A8A7-252F04715D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8E29EB68-BE92-4725-A8A7-252F04715D1A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66B1EFAD-CF6C-4C11-910F-3C59F11D9D65}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66B1EFAD-CF6C-4C11-910F-3C59F11D9D65}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66B1EFAD-CF6C-4C11-910F-3C59F11D9D65}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66B1EFAD-CF6C-4C11-910F-3C59F11D9D65}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61F7BDD2-D9DD-455D-ADC0-CC8B089CD164}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61F7BDD2-D9DD-455D-ADC0-CC8B089CD164}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61F7BDD2-D9DD-455D-ADC0-CC8B089CD164}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61F7BDD2-D9DD-455D-ADC0-CC8B089CD164}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
