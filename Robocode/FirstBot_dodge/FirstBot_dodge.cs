@@ -28,7 +28,7 @@ namespace MF_Robots
         {
             // -- Initialization of the robot --
 
-            SetColors(System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.Black);
+            SetColors(Color.Black, Color.Black, Color.Black);
 
             SetTurnGunRight(99999);
         }

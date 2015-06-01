@@ -45,9 +45,9 @@ namespace MF_Robots
         // Robot event handler, when the robot sees another robot
         public override void OnScannedRobot(ScannedRobotEvent e)
         {
-            Console.WriteLine("Enemy spotted!");
+            Console.WriteLine("Enemy spotted, I'm at: " + X.ToString() + ", " + Y.ToString());
             // demonstrate feature of debugging properties on RobotDialog
-            DebugProperty["lastScannedRobot"] = e.Name + " at " + e.Bearing + " degrees at time " + Time;
+            DebugProperty["lastScannedRobot"] = e.Name + " at " + e.Bearing + " degrees, " + e.Distance + " pixels away, at time " + Time;
 
             // Calculate the angle to the scanned robot
             double angle = Math.PI * ((this.Heading + e.Bearing) % 360) / 180.0;
@@ -63,7 +63,7 @@ namespace MF_Robots
             }
             else
             {
-                Fire(1);
+                Fire(0.5);
             }
         }
 

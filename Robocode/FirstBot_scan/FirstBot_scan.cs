@@ -11,16 +11,18 @@ namespace MF_Robots
 {
     class FirstBot_scan : Robot
     {
+        #region properties
         // The coordinates of the last scanned robot
         private int scannedX = int.MinValue;
         private int scannedY = int.MinValue;
+        #endregion
 
         // The main method of your robot containing robot logics
         public override void Run()
         {
             // -- Initialization of the robot --
 
-            SetColors(System.Drawing.Color.Black, System.Drawing.Color.Black, System.Drawing.Color.Black);
+            SetColors(Color.Black, Color.Black, Color.Black);
 
             // Infinite loop making sure this robot runs till the end of the battle round
             while (true)
@@ -29,9 +31,6 @@ namespace MF_Robots
                 TurnGunRight(360); // Spin gun around
                 Back(100); // Move back 100
                 TurnGunRight(360); // Spin gun around
-
-                // Our robot will move along the borders of the battle field
-                // by repeating the above two statements.
             }
         }
 
