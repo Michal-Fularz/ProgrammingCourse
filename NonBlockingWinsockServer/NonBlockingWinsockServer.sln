@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NonBlockingWinsockServer", "NonBlockingWinsockServer\NonBlockingWinsockServer.vcxproj", "{2ED12E59-8227-480E-A3D0-3B5F7B8ABFC2}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BlockingWinsockClient_simple", "BlockingWinsockClient_simple\BlockingWinsockClient_simple.vcxproj", "{175DD28C-6A72-4FDC-AD84-122774FBD7E4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{2ED12E59-8227-480E-A3D0-3B5F7B8ABFC2}.Debug|Win32.Build.0 = Debug|Win32
 		{2ED12E59-8227-480E-A3D0-3B5F7B8ABFC2}.Release|Win32.ActiveCfg = Release|Win32
 		{2ED12E59-8227-480E-A3D0-3B5F7B8ABFC2}.Release|Win32.Build.0 = Release|Win32
+		{175DD28C-6A72-4FDC-AD84-122774FBD7E4}.Debug|Win32.ActiveCfg = Debug|Win32
+		{175DD28C-6A72-4FDC-AD84-122774FBD7E4}.Debug|Win32.Build.0 = Debug|Win32
+		{175DD28C-6A72-4FDC-AD84-122774FBD7E4}.Release|Win32.ActiveCfg = Release|Win32
+		{175DD28C-6A72-4FDC-AD84-122774FBD7E4}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
