@@ -24,6 +24,7 @@ namespace MF
 
 		int bytesRecv = recv(this->socketUsed, this->recvBuffer, this->bufferSize, 0);
 		int nError = WSAGetLastError();
+
 		if (nError != WSAEWOULDBLOCK && nError != WSAENOTSOCK && nError != 0)
 		{
 			std::cout << "Winsock error code: " << nError << std::endl;
@@ -31,10 +32,10 @@ namespace MF
 			{
 				std::cout << "Client disconnected!" << std::endl;
 
-				// Shutdown our socket
+				// shutdown the socket
 				shutdown(this->socketUsed, SD_SEND);
 
-				// Close our socket entirely
+				// close the socket entirely
 				closesocket(this->socketUsed);
 
 				flagClientConnected = false;
@@ -142,6 +143,8 @@ namespace MF
 		{
 			this->CleanUp("Error listening on the socket.");
 		}
+
+		std::cout << "Server initialized" << std::endl;
 	}
 
 	void CServer::AcceptNewClients(void)
@@ -176,6 +179,8 @@ namespace MF
 			}
 			else
 			{
+				std::cout << "Client disconnected" << std::endl;
+				this->numberOfClients--;
 				itr = listOfClients.erase(itr);
 			}
 		}

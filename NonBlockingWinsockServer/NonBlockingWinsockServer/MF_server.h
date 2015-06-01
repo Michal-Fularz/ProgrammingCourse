@@ -46,7 +46,7 @@ namespace MF
 
 	private:
 
-		static const int maxNumberOfClients = 10;
+		static const int maxNumberOfClients = 100;
 		int numberOfClients;
 		SOCKET socketUsed;
 		std::list<CServerClient> listOfClients;
