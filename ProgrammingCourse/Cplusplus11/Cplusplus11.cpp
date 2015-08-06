@@ -60,6 +60,122 @@ private:
 	int value;
 };
 
+int my_own_partition(std::vector<int>& table, int low, int high)
+{
+	int pivotIndex = (high - low) / 2;
+	int pivotValue = table[pivotIndex];
+	std::swap(table[pivotIndex], table[high]);
+
+	int storeIndex = low;
+	for (int i = low; i <= (high - 1); ++i)
+	{
+		if (table[i] < pivotValue)
+		{
+			std::swap(table[i], table[storeIndex]);
+			storeIndex++;
+		}
+	}
+	std::swap(table[storeIndex], table[high]);
+
+	return storeIndex;
+}
+
+void my_own_quicksort(std::vector<int>& table, int low, int high)
+{
+	if (low < high)
+	{
+		int part = my_own_partition(table, low, high);
+		my_own_quicksort(table, low, part - 1);
+		my_own_quicksort(table, part + 1, high);
+	}
+}
+
+void merge(int pocz, int sr, int kon)
+{
+}
+
+void my_own_merge(std::vector<int>& table, int low, int high)
+{
+
+}
+
+void my_own_merge_sort(std::vector<int>& table, int start, int end)
+{
+	if (start < end)
+	{
+		int split = (start + end) / 2;
+		my_own_merge_sort(table, start, split);
+		my_own_merge_sort(table, split + 1, end);
+		my_own_merge(table, start, end);
+	}
+}
+
+void my_own_sort_tests(void)
+{
+	std::vector<int> table = { 1, 3, 10, 2, 8, 9, 7, 5, 4, 6 };
+	my_own_quicksort(table, 0, table.size()-1);
+	std::cout << "Sorted table: " << std::endl;
+	for (auto &item : table)
+	{
+		std::cout << item << ", ";
+	}
+	std::cout << std::endl;
+
+	table = { 1, 3, 10, 2, 8, 9, 7, 5, 4, 6 };
+	my_own_quicksort(table, 0, table.size() - 1);
+	std::cout << "Sorted table: " << std::endl;
+	for (auto &item : table)
+	{
+		std::cout << item << ", ";
+	}
+	std::cout << std::endl;
+}
+
+void google(void)
+{
+	std::vector<std::string> candidate_set = { "gopher", "cheater", "chess" };
+	std::vector<std::string> prefix_set = { "go", "chess", "checkers" };
+	std::sort(prefix_set.begin(), prefix_set.end());
+
+	for (auto &item : candidate_set)
+	{
+		// gopher
+		// go
+		// goo
+		// gop
+		// gor
+		auto found_item = std::lower_bound(prefix_set.begin(), prefix_set.end(), item);
+		std::string prefix = *found_item;
+
+		bool flag_same = false;
+		if (item.size() > prefix.size())
+		{
+			flag_same = true;
+			for (int i = 0; i<prefix.size(); ++i)
+			{
+				if (item[i] != prefix[i])
+				{
+					flag_same = false;
+					break;
+				}
+			}
+		}
+
+		if (flag_same)
+		{
+			std::cout << "The word : " << prefix << " is a prefix of word : " << item << std::endl;
+		}
+		else
+		{
+			std::cout << "The word " << item << "does NOT have a prefix in the set" << std::endl;
+
+		}
+
+	}
+}
+
+
+
 int main(void)
 {
 	// http://www.cprogramming.com/c++11/c++11-nullptr-strongly-typed-enum-class.html
@@ -140,6 +256,10 @@ int main(void)
 	// TODO - create simple tree and do breadth or depth first look up
 
 	// implement merge and quicksort
+	//my_own_sort_tests();
+	google();
+
+
 
 	return 1;
 }
