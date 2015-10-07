@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ProgrammingCourse", "ProgrammingCourse\ProgrammingCourse.vcxproj", "{2BFE248E-91E5-474C-90DF-B744C745C2A8}"
 EndProject
@@ -34,6 +34,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VectorPassingTests", "VectorPassingTests\VectorPassingTests.vcxproj", "{72363731-3EE4-4E57-8A06-0AA8777D4583}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sdl_template", "sdl_template\sdl_template.vcxproj", "{C0333C4D-E1D0-45FC-9D05-BC6FADD420BE}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "sdl_game_tanks", "sdl_game_tanks\sdl_game_tanks.vcxproj", "{19D9FE95-745E-415B-99F4-5269A231EA58}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_1_introduction", "lab_1_introduction\lab_1_introduction.vcxproj", "{53925210-1BD1-4812-8126-FCF3E1CA19FE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -205,6 +209,26 @@ Global
 		{C0333C4D-E1D0-45FC-9D05-BC6FADD420BE}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{C0333C4D-E1D0-45FC-9D05-BC6FADD420BE}.Release|Win32.ActiveCfg = Release|Win32
 		{C0333C4D-E1D0-45FC-9D05-BC6FADD420BE}.Release|Win32.Build.0 = Release|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Debug|Win32.ActiveCfg = Debug|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Debug|Win32.Build.0 = Debug|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Release|Any CPU.ActiveCfg = Release|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Release|Win32.ActiveCfg = Release|Win32
+		{19D9FE95-745E-415B-99F4-5269A231EA58}.Release|Win32.Build.0 = Release|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Debug|Win32.ActiveCfg = Debug|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Debug|Win32.Build.0 = Debug|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Release|Any CPU.ActiveCfg = Release|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Release|Win32.ActiveCfg = Release|Win32
+		{53925210-1BD1-4812-8126-FCF3E1CA19FE}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
