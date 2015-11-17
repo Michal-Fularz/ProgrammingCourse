@@ -19,6 +19,13 @@ int main(void)
 	increase_all(a, b, c, 5);
 	std::cout << "After: a: " << a << ", b: " << b << ", c: " << c << std::endl;
 
+	// task 5 - game of war
+	// subtask 1 - how to represent deck of cards (one colour?)
+	// subtask 2 - create array that holds 13 cards (represent them as 2-14)
+	// subtask 3 - randomize values in array (some of them will duplicate - how to solve it?
+	// subtask 4 - add shuffle function - it takes an array and shuffles the values - randomly generate two indicies and swap values that are stored in the array under theses indices
+	// subtask 5 - create a function play_war that compars two players decks and finds the winner (compared first card from deck 1 with first card with deck one, the higher card gets the player one point. Draws does not give any points.
+
 	std::cout << "Press any key to finish." << std::endl;
 	_getch();
 
