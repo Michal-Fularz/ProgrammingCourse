@@ -9,6 +9,14 @@
 
 int main(void)
 {
+	// this requires VS 2013 or newer
+	std::list<int> l{ 0, 1, 2, 3 };
+	for (auto item : l)
+	{
+		std::cout << item << ", ";
+	}
+	std::cout << std::endl;
+
 	std::vector<std::vector<int>> v_2d;
 	int number_of_rows = 5;
 	int number_of_cols = 5;
@@ -31,11 +39,47 @@ int main(void)
 		std::cout << std::endl;
 	}
 
+	const int number_of_iterations = 100000;
+
+	{
+		auto start = std::chrono::steady_clock::now();
+		//  Insert the code that will be timed
+		std::vector<int> v_test_push_back;
+		for (int i = 0; i < number_of_iterations; ++i)
+		{
+			v_test_push_back.push_back(i);
+		}
+
+		auto end = std::chrono::steady_clock::now();
+		// Store the time difference between start and end
+		auto diff = end - start;
+		std::cout << "vector push back: ";
+		// print the measured time in milliseconds:
+		std::cout << std::chrono::duration <double, std::milli>(diff).count() << " ms" << std::endl;
+	}
+
+	{
+		auto start = std::chrono::steady_clock::now();
+		//  Insert the code that will be timed
+		std::list<int> l_test_push_back;
+		for (int i = 0; i < number_of_iterations; ++i)
+		{
+			l_test_push_back.push_back(i);
+		}
+
+		auto end = std::chrono::steady_clock::now();
+		// Store the time difference between start and end
+		auto diff = end - start;
+		std::cout << "list push back: ";
+		// print the measured time in milliseconds:
+		std::cout << std::chrono::duration <double, std::milli>(diff).count() << " ms" << std::endl;
+	}
+
 	{
 		auto start = std::chrono::steady_clock::now();
 		//  Insert the code that will be timed
 		std::vector<int> v_test_insert;
-		for (int i = 0; i < 100000; ++i)
+		for (int i = 0; i < number_of_iterations; ++i)
 		{
 			v_test_insert.insert(v_test_insert.begin(), i);
 		}
@@ -43,6 +87,7 @@ int main(void)
 		auto end = std::chrono::steady_clock::now();
 		// Store the time difference between start and end
 		auto diff = end - start;
+		std::cout << "vector push front (by insert method): ";
 		// print the measured time in milliseconds:
 		std::cout << std::chrono::duration <double, std::milli>(diff).count() << " ms" << std::endl;
 	}
@@ -51,14 +96,15 @@ int main(void)
 		auto start = std::chrono::steady_clock::now();
 		//  Insert the code that will be timed
 		std::list<int> l_test_insert;
-		for (int i = 0; i < 100000; ++i)
+		for (int i = 0; i < number_of_iterations; ++i)
 		{
-			l_test_insert.insert(l_test_insert.begin(), i);
+			l_test_insert.push_front(i);
 		}
 
 		auto end = std::chrono::steady_clock::now();
 		// Store the time difference between start and end
 		auto diff = end - start;
+		std::cout << "list push front: ";
 		// print the measured time in milliseconds:
 		std::cout << std::chrono::duration <double, std::milli>(diff).count() << " ms" << std::endl;
 	}
