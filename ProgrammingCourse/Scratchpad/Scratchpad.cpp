@@ -615,9 +615,138 @@ void TEST_vecroty_listy(void)
 	system("pause");
 }
 
+#include <stack>
+#include <queue>
+
+struct test
+{
+	int a;
+	int b;
+};
+
+static void testQueueStack(void)
+{
+	int value;
+
+	std::stack<int> stos;
+	stos.empty();
+	stos.push(5);
+	stos.size();
+	value = stos.top();
+	stos.pop();
+
+	test valueTest;
+
+	std::queue<test> kolejka;
+	kolejka.empty();
+	kolejka.push(valueTest);
+	kolejka.size();
+	valueTest = kolejka.front();
+	valueTest = kolejka.back();
+	kolejka.pop();
+}
+
+#if 0
+	static void dynamicTableTest(void)
+	{
+		int rozmiar;
+		cin >> rozmiar;
+		int tab[rozmiar];
+
+		for (int i = 0; i<rozmiar; i++)
+		{
+			cin >> tab[i];
+		}
+
+		for (int i = 0; i<rozmiar; i++)
+		{
+			std::cout << tab[i] << std::endl;
+		}
+	}
+#endif
+
+	typedef unsigned char	uint8_t;
+	typedef	unsigned short	uint16_t;
+	typedef unsigned int	uint32_t;
+
+	typedef uint16_t		used_type_t;
+
+#define NUMBER_OF_BITS_TO_COUNT				256
+#if (used_type_t == uint8_t)
+#define NUMBER_OF_BITS_IN_ONE_VARIABLE		8
+#endif
+#define NUMBER_OF_VARIABLES					(NUMBER_OF_BITS_TO_COUNT/NUMBER_OF_BITS_IN_ONE_VARIABLE)
+
+uint16_t count_ones(used_type_t values[NUMBER_OF_VARIABLES])
+{
+	uint16_t numberOfOnes = 0;
+	uint8_t i, j;
 
 
+	count_ones_label0:for (i = 0; i<NUMBER_OF_VARIABLES; i++)
+	{
 
+		count_ones_label1:for (j = 0; j<NUMBER_OF_BITS_IN_ONE_VARIABLE; j++)
+		{
+			//if((values[i] & (1<<j)) == (1<<j))
+			// Ÿle - & ma ni¿szy priorytet ni¿ ==, co ciekawe + ma wy¿szy
+			if (values[i] & (1 << j) == (1 << j))
+				// Ÿle - jak wy¿ej
+				//if(values[i] & (1<<j) != 0)
+			{
+				numberOfOnes++;
+			}
+		}
+	}
+
+	return numberOfOnes;
+}
+
+int testCountOnes()
+{
+	used_type_t inputArgument[NUMBER_OF_VARIABLES] = { 2, 4, 1, 1, 1, 1, 1, 8, 1, 1, 1, 1, 1, 2, 1, 1 };
+
+	uint16_t outputValue = count_ones(inputArgument);
+
+	int retval;
+
+	if (outputValue == 16)
+	{
+		retval = 0;
+		printf("Test passed !\n");
+	}
+	else
+	{
+		retval = 1;
+		printf("Test failed  !!!\n");
+	}
+
+	// Return 0 if the test
+	return retval;
+}
+
+struct SZespolone
+{
+	int re;
+	int im;
+
+	friend ostream& operator<<(ostream& os, const SZespolone z);
+};
+
+ostream& operator<<(ostream& os, const SZespolone z)
+{
+	os << z.re << ' ' << z.im << '\n';
+	return os;
+}
+
+static inline void TestOstreamOverloadedOperator(void)
+{
+	SZespolone z;
+	z.re = 5;
+	z.im = 3;
+
+	std::cout << z;
+}
 
 
 int main(void)
