@@ -58,8 +58,8 @@ void strings(void)
 	{
 		std::cout << "You guessed right!" << std::endl;
 	}
-	// access second letter in string using random access ([]) operator
-	std::cout << "Second letter is: " << word_from_user[2] << std::endl;
+	// access third letter in string using random access ([]) operator
+	std::cout << "Third letter is: " << word_from_user[2] << std::endl;
 	// iterate over string
 	for (std::string::iterator itr = word_from_user.begin(); itr != word_from_user.end(); ++itr)
 	{
@@ -166,8 +166,8 @@ void structures(void)
 
 int main(void)
 {
-	two_dimensional_array();
-	std::cout << std::endl;
+	//two_dimensional_array();
+	//std::cout << std::endl;
 
 	strings();
 	std::cout << std::endl;

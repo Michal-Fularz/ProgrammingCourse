@@ -2,6 +2,7 @@
 #include <fstream>		// for stream file operations
 
 #include <iostream>
+#include <conio.h>
 
 using namespace std;
 
@@ -207,6 +208,9 @@ int main(void)
 	std::cout << "Press enter to continue..." << std::endl;
 	std::cin.sync(); // Flush The Input Buffer Just In Case
 	std::cin.ignore(); // There's No Need To Actually Store The Users Input
+
+	std::cout << "Press any key to finish." << std::endl;
+	_getch();
 
 	return 0;
 }
