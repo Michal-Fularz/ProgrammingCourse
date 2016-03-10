@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{A1BE0204-AE88-462B-958A-BEA9571F7370}</ProjectGuid>
+    <ProjectGuid>{40CBC31B-BBDB-4852-A4EA-8A440DB4D1E7}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>OperatorsOverloading</RootNamespace>
+    <RootNamespace>lab_s02e02_operators_overloading</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -76,7 +76,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="OperatorsOverloading.cpp" />
+    <ClCompile Include="Fraction.cpp" />
+    <ClCompile Include="lab_s02e02_operators_overloading.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Fraction.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
