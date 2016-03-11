@@ -7,7 +7,7 @@ double tankPositionX = 0.0;
 double barrelAngle = 30;
 
 /* GLUT callback Handlers */
-static void resize(int width, int height)
+void resize(int width, int height)
 {
 	const float ar = (float)width / (float)height;
 
@@ -22,7 +22,7 @@ static void resize(int width, int height)
 	glLoadIdentity();
 }
 
-static void idle(void)
+void idle()
 {
 	glutPostRedisplay();
 }
@@ -70,7 +70,7 @@ void DrawTank()
 	glPopMatrix();
 }
 
-static void display(void)
+void display()
 {
 	// clear the scene
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);

@@ -1,9 +1,10 @@
-﻿#include <iostream>
+#include <iostream>
 
+#define NDEBUG
 #include <GL/freeglut.h>
 
 /* GLUT callback Handlers */
-static void resize(int width, int height)
+void resize(int width, int height)
 {
 	const float ar = (float)width / (float)height;
 
@@ -18,7 +19,7 @@ static void resize(int width, int height)
 	glLoadIdentity();
 }
 
-static void idle(void)
+void idle()
 {
 	glutPostRedisplay();
 }
@@ -47,7 +48,7 @@ void DrawRectangle(double width, double height)
 	glPopMatrix();
 }
 
-static void display(void)
+void display()
 {
 	// clear the scene
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -59,22 +60,13 @@ static void display(void)
 	glutSwapBuffers();
 }
 
-int main(int argc, char *argv[])
+void InitGLUTScene()
 {
-	// it's still possible to use console to print messages
-	printf("Hello openGL world!");
-	// the same can be done with cout / cin
-
 	glutInitWindowSize(800, 600);
 	glutInitWindowPosition(40, 40);
-	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
 
 	glutCreateWindow("OpenGLUT Shapes");
-
-	glutReshapeFunc(resize);
-	glutDisplayFunc(display);
-	glutIdleFunc(idle);
 
 	// set white as the clear colour
 	glClearColor(1, 1, 1, 1);
@@ -85,7 +77,26 @@ int main(int argc, char *argv[])
 	glEnable(GL_LIGHT0);
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_COLOR_MATERIAL);
+}
 
+void SetCallbackFunctions()
+{
+	glutReshapeFunc(resize);
+	glutDisplayFunc(display);
+	glutIdleFunc(idle);
+}
+
+int main(int argc, char *argv[])
+{
+	// it's still possible to use console to print messages
+	printf("Hello openGL world!");
+	// the same can be done with cout / cin
+
+	glutInit(&argc, argv);
+	InitGLUTScene();
+	SetCallbackFunctions();
+
+	// start GLUT event loop. It ends when user close the window.
 	glutMainLoop();
 
 	return 0;

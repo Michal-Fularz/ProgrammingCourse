@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="freeglut_template.cpp">
+    <ClCompile Include="lab_s02e03_freeglut_template.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
