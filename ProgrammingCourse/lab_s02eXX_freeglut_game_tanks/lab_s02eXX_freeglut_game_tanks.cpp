@@ -1,16 +1,17 @@
 #include <iostream>
 
+#define NDEBUG
 #include <GL/freeglut.h>
 
-#include "CTank.h"
-#include "CBullet.h"
+#include "../_common_libarires/CTank.h"
+#include "../_common_libarires/CBullet.h"
 
 // default constructor
 CTank tank1(1.0, 0.3, 0.7, 0.2);
 // specialized constructor 
 CTank tank2(
 	SColour(0.0, 0.0, 1.0),
-	1.0, 0.3, 
+	1.0, 0.3,
 	SColour(0.5, 0.0, 0.5),
 	0.7, 0.2
 	);

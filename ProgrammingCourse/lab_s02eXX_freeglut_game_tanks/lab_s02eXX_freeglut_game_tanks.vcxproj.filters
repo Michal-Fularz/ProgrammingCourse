@@ -15,27 +15,27 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="freeglut_game_tanks.cpp">
+    <ClCompile Include="lab_s02eXX_freeglut_game_tanks.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CTank.cpp">
+    <ClCompile Include="..\_common_libarires\CBullet.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CObject.cpp">
+    <ClCompile Include="..\_common_libarires\CObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="CBullet.cpp">
+    <ClCompile Include="..\_common_libarires\CTank.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CTank.h">
+    <ClInclude Include="..\_common_libarires\CBullet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CObject.h">
+    <ClInclude Include="..\_common_libarires\CObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="CBullet.h">
+    <ClInclude Include="..\_common_libarires\CTank.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

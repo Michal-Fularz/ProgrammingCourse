@@ -1,5 +1,6 @@
 #include "CTank.h"
 
+#define NDEBUG
 #include <GL/freeglut.h>
 
 void CTank::Draw(void)

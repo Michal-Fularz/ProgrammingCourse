@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{0403F24D-30B8-4DE2-A9CC-BDE29743F1DF}</ProjectGuid>
+    <ProjectGuid>{99A3B2EF-FF6E-42C5-965F-3624A81C70E8}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>freeglut_game_tanks</RootNamespace>
+    <RootNamespace>lab_s02eXX_freeglut_game_tanks</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -34,11 +34,11 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\_PropertySheets\PropertySheet_freeglut_debug.props" />
+    <Import Project="..\..\_PropertySheets\PropertySheet_freeglut_3_0_debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\_PropertySheets\PropertySheet_freeglut_debug.props" />
+    <Import Project="..\..\_PropertySheets\PropertySheet_freeglut_3_0_release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -78,15 +78,15 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CBullet.cpp" />
-    <ClCompile Include="CObject.cpp" />
-    <ClCompile Include="CTank.cpp" />
-    <ClCompile Include="freeglut_game_tanks.cpp" />
+    <ClCompile Include="..\_common_libarires\CBullet.cpp" />
+    <ClCompile Include="..\_common_libarires\CObject.cpp" />
+    <ClCompile Include="..\_common_libarires\CTank.cpp" />
+    <ClCompile Include="lab_s02eXX_freeglut_game_tanks.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CBullet.h" />
-    <ClInclude Include="CObject.h" />
-    <ClInclude Include="CTank.h" />
+    <ClInclude Include="..\_common_libarires\CBullet.h" />
+    <ClInclude Include="..\_common_libarires\CObject.h" />
+    <ClInclude Include="..\_common_libarires\CTank.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

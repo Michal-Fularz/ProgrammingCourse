@@ -1,5 +1,6 @@
 #include "CBullet.h"
 
+#define NDEBUG
 #include <GL/freeglut.h>
 #include <cmath>
 
