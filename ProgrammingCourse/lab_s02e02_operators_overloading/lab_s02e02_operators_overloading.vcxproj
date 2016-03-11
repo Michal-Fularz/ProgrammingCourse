@@ -78,9 +78,11 @@
   <ItemGroup>
     <ClCompile Include="Fraction.cpp" />
     <ClCompile Include="lab_s02e02_operators_overloading.cpp" />
+    <ClCompile Include="SComplexNumber.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Fraction.h" />
+    <ClInclude Include="SComplexNumber.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

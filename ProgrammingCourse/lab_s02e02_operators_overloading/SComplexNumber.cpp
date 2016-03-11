@@ -45,7 +45,7 @@ SComplexNumber SComplexNumber::operator!()
 
 std::ostream& operator<<(std::ostream& output, const SComplexNumber& n)
 {
-	output << "Complex number: " << n.Re << " + " << n.Im << "j" << endl;
+	output << "Complex number: " << n.Re << " + " << n.Im << "j" << std::endl;
 
 	return output;
 }
