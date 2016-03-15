@@ -59,6 +59,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02e03_freeglut_templat
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02eXX_freeglut_game_tanks", "lab_s02eXX_freeglut_game_tanks\lab_s02eXX_freeglut_game_tanks.vcxproj", "{99A3B2EF-FF6E-42C5-965F-3624A81C70E8}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02e03_template_extended", "lab_s02e03_template_extended\lab_s02e03_template_extended.vcxproj", "{B759D58E-75DD-45BA-BE86-2CA02D774DBA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -349,6 +351,16 @@ Global
 		{99A3B2EF-FF6E-42C5-965F-3624A81C70E8}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{99A3B2EF-FF6E-42C5-965F-3624A81C70E8}.Release|Win32.ActiveCfg = Release|Win32
 		{99A3B2EF-FF6E-42C5-965F-3624A81C70E8}.Release|Win32.Build.0 = Release|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Debug|Win32.Build.0 = Debug|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Release|Any CPU.ActiveCfg = Release|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Release|Win32.ActiveCfg = Release|Win32
+		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
