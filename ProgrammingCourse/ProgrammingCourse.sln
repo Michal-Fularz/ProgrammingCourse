@@ -21,8 +21,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Inheritance", "Inheritance\
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freeglut_scratchpad", "freeglut_scratchpad\freeglut_scratchpad.vcxproj", "{ECF9955F-E438-4057-A5E9-B048CBCE55D0}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freeglut_template_extended", "freeglut_template_extended\freeglut_template_extended.vcxproj", "{706F8F0F-8706-4113-A511-241FD0EE08C4}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "freeglut_3d", "freeglut_3d\freeglut_3d.vcxproj", "{7D2815EE-C8B0-48F8-9AC6-7344A0158DB4}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "VectorPassingTests", "VectorPassingTests\VectorPassingTests.vcxproj", "{72363731-3EE4-4E57-8A06-0AA8777D4583}"
@@ -59,7 +57,9 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02e03_freeglut_templat
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02eXX_freeglut_game_tanks", "lab_s02eXX_freeglut_game_tanks\lab_s02eXX_freeglut_game_tanks.vcxproj", "{99A3B2EF-FF6E-42C5-965F-3624A81C70E8}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02e03_template_extended", "lab_s02e03_template_extended\lab_s02e03_template_extended.vcxproj", "{B759D58E-75DD-45BA-BE86-2CA02D774DBA}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02e03_freeglut_template_extended", "lab_s02e03_template_extended\lab_s02e03_template_extended.vcxproj", "{B759D58E-75DD-45BA-BE86-2CA02D774DBA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02eXX_freeglut_3d_rotations_by_mouse", "lab_s02eXX_freeglut_3d_rotations_by_mouse\lab_s02eXX_freeglut_3d_rotations_by_mouse.vcxproj", "{7D737DC4-F8E5-41C5-A7EA-743F23945388}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -161,16 +161,6 @@ Global
 		{ECF9955F-E438-4057-A5E9-B048CBCE55D0}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{ECF9955F-E438-4057-A5E9-B048CBCE55D0}.Release|Win32.ActiveCfg = Release|Win32
 		{ECF9955F-E438-4057-A5E9-B048CBCE55D0}.Release|Win32.Build.0 = Release|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Debug|Win32.ActiveCfg = Debug|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Debug|Win32.Build.0 = Debug|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Release|Any CPU.ActiveCfg = Release|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Release|Win32.ActiveCfg = Release|Win32
-		{706F8F0F-8706-4113-A511-241FD0EE08C4}.Release|Win32.Build.0 = Release|Win32
 		{7D2815EE-C8B0-48F8-9AC6-7344A0158DB4}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{7D2815EE-C8B0-48F8-9AC6-7344A0158DB4}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{7D2815EE-C8B0-48F8-9AC6-7344A0158DB4}.Debug|Mixed Platforms.Build.0 = Debug|Win32
@@ -361,6 +351,16 @@ Global
 		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Release|Win32.ActiveCfg = Release|Win32
 		{B759D58E-75DD-45BA-BE86-2CA02D774DBA}.Release|Win32.Build.0 = Release|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Debug|Win32.Build.0 = Debug|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Release|Any CPU.ActiveCfg = Release|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Release|Win32.ActiveCfg = Release|Win32
+		{7D737DC4-F8E5-41C5-A7EA-743F23945388}.Release|Win32.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

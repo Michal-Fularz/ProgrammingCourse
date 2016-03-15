@@ -15,7 +15,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="freeglut_3d.cpp">
+    <ClCompile Include="lab_s02eXX_freeglut_3d_rotations_by_mouse.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

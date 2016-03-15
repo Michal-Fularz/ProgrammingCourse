@@ -11,9 +11,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <PropertyGroup Label="Globals">
-    <ProjectGuid>{7D2815EE-C8B0-48F8-9AC6-7344A0158DB4}</ProjectGuid>
+    <ProjectGuid>{7D737DC4-F8E5-41C5-A7EA-743F23945388}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>freeglut_3d</RootNamespace>
+    <RootNamespace>lab_s02eXX_freeglut_3d_rotations_by_mouse</RootNamespace>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -34,11 +34,11 @@
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\_PropertySheets\PropertySheet_freeglut_debug.props" />
+    <Import Project="..\..\_PropertySheets\PropertySheet_freeglut_3_0_debug.props" />
   </ImportGroup>
   <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
-    <Import Project="..\..\_PropertySheets\PropertySheet_freeglut_debug.props" />
+    <Import Project="..\..\_PropertySheets\PropertySheet_freeglut_3_0_release.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -78,7 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="freeglut_3d.cpp" />
+    <ClCompile Include="lab_s02eXX_freeglut_3d_rotations_by_mouse.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

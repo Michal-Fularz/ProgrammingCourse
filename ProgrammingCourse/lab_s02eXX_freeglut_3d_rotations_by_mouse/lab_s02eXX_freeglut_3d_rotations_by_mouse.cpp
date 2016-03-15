@@ -1,5 +1,6 @@
 #include <iostream>
 
+#define NDEBUG
 #include <GL/freeglut.h>
 
 // Initial translation (x,y,z) and rotation (xrot, yrot, zrot) of model coordinate system
@@ -12,8 +13,11 @@ int mouseLastX = 0, mouseLastY = 0;
 // Storing information if left mouse button is clicked
 bool mouseLeftBtnClicked = false;
 
+// object for gluCylinder drawing functions
+GLUquadricObj *quadratic;
+
 /* GLUT callback Handlers */
-static void resize(int width, int height)
+void resize(int width, int height)
 {
 	const float ar = (float)width / (float)height;
 
@@ -28,67 +32,91 @@ static void resize(int width, int height)
 	glLoadIdentity();
 }
 
-static void idle(void)
+void idle(void)
 {
 	glutPostRedisplay();
 }
 
-void processNormalKeys(unsigned char key, int xx, int yy) {
+void keyboard(unsigned char key, int mouse_x, int mouse_y) {
 
 	// X axis
 	if (key == 'q')
+	{
 		x = x - 0.1;
+	}
 	else if (key == 'w')
+	{
 		x = x + 0.1;
+	}
 	else if (key == 'e')
+	{
 		xrot = xrot - 5;
+	}
 	else if (key == 'r')
+	{
 		xrot = xrot + 5;
+	}
 
 	// Y axis
 	if (key == 'a')
+	{
 		y = y - 0.1;
+	}
 	else if (key == 's')
+	{
 		y = y + 0.1;
+	}
 	else if (key == 'd')
+	{
 		yrot = yrot - 5;
+	}
 	else if (key == 'f')
+	{
 		yrot = yrot + 5;
+	}
 
 	// Z axis
 	else if (key == 'z')
-		z = z - 0.1;
-	else if (key == 'x')
-		z = z + 0.1;
-	else if (key == 'c')
-		zrot = zrot - 5;
-	else if (key == 'v')
-		zrot = zrot + 5;
-}
-
-void mouseMovement(int x, int y) {
-
-	if (mouseLeftBtnClicked)
 	{
-		int diffx = x - mouseLastX; //check the difference between the current x and the last x position
-		int diffy = y - mouseLastY; //check the difference between the current y and the last y position
-		mouseLastX = x; //set lastx to the current x position
-		mouseLastY = y; //set lasty to the current y position
-
-		// conversion between mouse plane and axes of coordination system
-		yrot += diffx * 0.5; // rotation around Y axis is based on mouse movement in x direction
-		xrot += diffy * 0.5; // rotation around X axis is based on mouse movement in y direction
+		z = z - 0.1;
+	}
+	else if (key == 'x')
+	{
+		z = z + 0.1;
+	}
+	else if (key == 'c')
+	{
+		zrot = zrot - 5;
+	}
+	else if (key == 'v')
+	{
+		zrot = zrot + 5;
 	}
 }
 
-void onMouseButton(int button, int state, int x, int y)
+void mouseMovement(int mouse_x, int mouse_y) {
+
+	if (mouseLeftBtnClicked)
+	{
+		int diff_x = mouse_x - mouseLastX; //check the difference between the current x and the last x position
+		int diff_y = mouse_y - mouseLastY; //check the difference between the current y and the last y position
+		mouseLastX = mouse_x; //set lastx to the current x position
+		mouseLastY = mouse_y; //set lasty to the current y position
+
+		// conversion between mouse plane and axes of coordination system
+		yrot += diff_x * 0.5; // rotation around Y axis is based on mouse movement in x direction
+		xrot += diff_y * 0.5; // rotation around X axis is based on mouse movement in y direction
+	}
+}
+
+void onMouseButton(int button, int state, int mouse_x, int mouse_y)
 {
 	if (button == GLUT_LEFT_BUTTON && state == GLUT_UP) {
 		mouseLeftBtnClicked = false;
 	}
 	else if (button == GLUT_LEFT_BUTTON && state == GLUT_DOWN) {
-		mouseLastX = x;
-		mouseLastY = y;
+		mouseLastX = mouse_x;
+		mouseLastY = mouse_y;
 		mouseLeftBtnClicked = true;
 	}
 }
@@ -107,55 +135,62 @@ void setModelRotationAndTranslation()
 void drawAxesOfCoordinateSystem()
 {
 	// Drawing axes
-	GLUquadricObj *quadratic;
-	quadratic = gluNewQuadric();
 
 	// X axis -> blue
 	glPushMatrix();
-	glColor3d(0.0, 0.0, 1.0);
-	glRotated(90, 0, 1, 0);
-	gluCylinder(quadratic, 0.1f, 0.1f, 2, 32, 32);
+	{
+		glColor3d(0.0, 0.0, 1.0);
+		glRotated(90, 0, 1, 0);
+		gluCylinder(quadratic, 0.1f, 0.1f, 2, 32, 32);
+	}
 	glPopMatrix();
 
 	// Y axis -> red
 	glPushMatrix();
-	glColor3d(1.0, 0.0, 0.0);
-	glRotated(-90, 1, 0, 0);
-	gluCylinder(quadratic, 0.1f, 0.1f, 2, 32, 32);
+	{
+		glColor3d(1.0, 0.0, 0.0);
+		glRotated(-90, 1, 0, 0);
+		gluCylinder(quadratic, 0.1f, 0.1f, 2, 32, 32);
+	}
 	glPopMatrix();
 
 	// Z axis -> green
 	glPushMatrix();
-	glColor3d(0.0, 1.0, 0.0);
-	gluCylinder(quadratic, 0.1f, 0.1f, 2, 32, 32);
+	{
+		glColor3d(0.0, 1.0, 0.0);
+		gluCylinder(quadratic, 0.1f, 0.1f, 2, 32, 32);
+	}
 	glPopMatrix();
 }
 
 void drawCube(float x, float y, float z, float r, float g, float b, float size) {
 	glPushMatrix();
-	glTranslated(x, y, z);
-	glColor3d(r, g, b);
-	glutSolidCube(size);
+	{
+		glTranslated(x, y, z);
+		glColor3d(r, g, b);
+		glutSolidCube(size);
+	}
 	glPopMatrix();
 }
 
-static void display(void)
+void display(void)
 {
 	// clear the scene
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
-	setModelRotationAndTranslation();
-	drawAxesOfCoordinateSystem();
+	{
+		setModelRotationAndTranslation();
+		drawAxesOfCoordinateSystem();
 
-	// Drawing cube at (1,1,1) with black color (0.0, 0.0, 0.0) with size = 0.5
-	drawCube(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.5);
+		// Drawing a cube at (1,1,1) with black color (0.0, 0.0, 0.0) and size = 0.5
+		drawCube(1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 0.5);
 
-	// Add your drawing functions below 
-	// ...
-	// ...
-	// ...
-
+		// Add your drawing functions below 
+		// ...
+		// ...
+		// ...
+	}
 	glPopMatrix();
 
 	glutSwapBuffers();
@@ -181,26 +216,17 @@ void menu() {
 	std::cout << "'x' - move coordinate system in direction of plus Z" << std::endl;
 	std::cout << "'c' - rotate coordinate system of minus angle around Z" << std::endl;
 	std::cout << "'v' - rotate coordinate system of plus angle around Z" << std::endl << std::endl;
+
+	std::cout << "Use mouse (with left button pressed) to rotate the scene" << std::endl;
 }
 
-int main(int argc, char *argv[])
+void InitGLUTScene(char* window_name)
 {
-	menu();
-
 	glutInitWindowSize(800, 600);
 	glutInitWindowPosition(40, 40);
-	glutInit(&argc, argv);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
 
-	glutCreateWindow("OpenGLUT Shapes");
-
-	glutReshapeFunc(resize);
-	glutDisplayFunc(display);
-	glutIdleFunc(idle);
-
-	glutKeyboardFunc(processNormalKeys);
-	glutMouseFunc(onMouseButton);
-	glutMotionFunc(mouseMovement);
+	glutCreateWindow(window_name);
 
 	// set white as the clear colour
 	glClearColor(1, 1, 1, 1);
@@ -211,6 +237,28 @@ int main(int argc, char *argv[])
 	glEnable(GL_LIGHT0);
 	glEnable(GL_NORMALIZE);
 	glEnable(GL_COLOR_MATERIAL);
+}
+
+void SetCallbackFunctions()
+{
+	glutReshapeFunc(resize);
+	glutDisplayFunc(display);
+	glutIdleFunc(idle);
+
+	glutKeyboardFunc(keyboard);
+	glutMouseFunc(onMouseButton);
+	glutMotionFunc(mouseMovement);
+}
+
+int main(int argc, char *argv[])
+{
+	menu();
+
+	glutInit(&argc, argv);
+	InitGLUTScene("3d rotations by mouse");
+	SetCallbackFunctions();
+
+	quadratic = gluNewQuadric();
 
 	glutMainLoop();
 
