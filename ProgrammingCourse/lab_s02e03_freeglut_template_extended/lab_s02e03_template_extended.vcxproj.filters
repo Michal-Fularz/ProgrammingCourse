@@ -15,10 +15,10 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="lab_s02e03_template_extended.cpp">
+    <ClCompile Include="Rectangle.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Rectangle.cpp">
+    <ClCompile Include="lab_s02e03_freeglut_template_extended.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

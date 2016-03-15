@@ -40,7 +40,7 @@ void display()
 	glutSwapBuffers();
 }
 
-void keyboard(unsigned char key, int x, int y)
+void keyboard(unsigned char key, int mouse_x, int mouse_y)
 {
 	if (key == 'w')
 	{
@@ -60,13 +60,13 @@ void keyboard(unsigned char key, int x, int y)
 	}
 }
 
-void InitGLUTScene()
+void InitGLUTScene(char* window_name)
 {
 	glutInitWindowSize(800, 600);
 	glutInitWindowPosition(40, 40);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
 
-	glutCreateWindow("OpenGLUT Shapes");
+	glutCreateWindow(window_name);
 
 	// set white as the clear colour
 	glClearColor(1, 1, 1, 1);
@@ -94,7 +94,7 @@ int main(int argc, char *argv[])
 	// the same can be done with cout / cin
 
 	glutInit(&argc, argv);
-	InitGLUTScene();
+	InitGLUTScene("freeglut template extended");
 	SetCallbackFunctions();
 
 	// start GLUT event loop. It ends when user close the window.
