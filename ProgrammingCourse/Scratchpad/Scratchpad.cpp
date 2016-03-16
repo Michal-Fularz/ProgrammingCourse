@@ -758,3 +758,146 @@ int main(void)
 
 	return 1;
 }
+
+
+class pasazer{
+public:
+	//dane:
+	string imie;
+	string nazwisko;
+	unsigned int masa;
+	unsigned int masa_bagazu;
+
+	//funkcje sk³adowe:
+	void wypisz();
+	unsigned int MasaCalkowita();
+
+	//konstruktor:
+	pasazer(unsigned int K_masa = 0,
+		unsigned int K_masa_bagazu = 0,
+		string K_imie = "Brak",
+		string K_nazwisko = "");
+
+	~pasazer(void);
+};
+
+
+pasazer::pasazer(unsigned int K_masa,
+	unsigned int K_masa_bagazu,
+	string K_imie,
+	string K_nazwisko) :
+	masa(K_masa), masa_bagazu(K_masa_bagazu), imie(K_imie), nazwisko(K_nazwisko)
+{
+
+	cout << "\nPasazer " << imie << " " << nazwisko << " wszedl na poklad\n";
+}
+
+pasazer::~pasazer(void){
+	cout << "\nPasazer " << imie << " " << nazwisko << " oposcil poklad\n";
+	system("pause");
+}
+
+
+
+class DC3{
+	//Dane:
+private:
+	//Dane niezmienne dla typu samolotu:
+	const unsigned long masa_wlasna = 8300;//kg
+	static bool dopuszczony;
+
+	//Dane zale¿ne od konfiguracji
+	unsigned int pojemnosc;//pasa¿erów
+	double zuzycie_paliwa;//ton/1000km
+	unsigned long paliwo;//kg
+	unsigned long masa_startowa;//kg
+	pasazer *lista;//lista pasa¿erów
+public:
+	string nazwa;
+
+	//Metody:
+private:
+	void licz_mase(unsigned long km);//oblicza masê startow¹ na zadanej trasie
+	void wydruk(ostream& strumien);
+public:
+	void manifest(unsigned long jak_daleko);
+	bool dodaj_pasazera(pasazer);
+	bool usun_pasazera(int nr);//0=usuñ wszystkich
+
+	static void zezwolenie(bool z);//funkcja statyczna
+	//Konstruktor:
+	DC3(string K_nazwa = "Zwykly DC3", unsigned int K_pojemnosc = 32, double K_zuzycie_paliwa = 1.5);
+	//Dostruktor:
+	//~DC3(void);
+};
+
+DC3::DC3(
+	string K_nazwa,
+	unsigned int K_pojemnosc,
+	double K_zuzycie_paliwa)
+{
+	pojemnosc = K_pojemnosc;//pasa¿erów
+	zuzycie_paliwa = K_zuzycie_paliwa;//ton/1000km
+	nazwa = K_nazwa;
+
+	lista = new pasazer[pojemnosc];//lista pasa¿erów
+	pasazer pom(0, 0, "", "");
+	for (unsigned int i = 0; i<pojemnosc; i++){ lista[0] = pom; }
+}
+
+#include <list>
+#include <vector>
+
+struct osoba
+{
+	string imie;
+	string nazwisko;
+};
+
+int Rafa³_code_test_main(void)
+{
+	list<osoba> osoby;
+
+	{
+		osoba nowaOsoba;
+		nowaOsoba.imie = "aaa";
+		nowaOsoba.nazwisko = "bbb";
+		osoby.push_back(nowaOsoba);
+	}
+
+	for (auto itr = osoby.begin(); itr != osoby.end(); itr++)
+	{
+		std::cout << "osoba: " << itr->imie << endl;
+	}
+
+	{
+		vector<pasazer> pasazery;
+
+		{
+
+
+			pasazer nowy_pasazer(99, 19, "asdkja", "kasdj");
+
+			pasazery.push_back(nowy_pasazer);
+
+			//pasazery.push_back(new pasazer(567,21, "dasdas", "asdasd"));
+		}
+
+		for (auto itr = pasazery.begin(); itr != pasazery.end(); itr++)
+		{
+			std::cout << "pasazer: " << itr->masa << endl;
+		}
+
+		pasazery[0].imie = "asdfewquryhweiurhwiuwerh";
+		std::cout << "pasazer: " << pasazery[0].masa << endl;
+	}
+
+
+	DC3 plane;
+
+	int k = k + 1;
+
+	std::cout << k << endl;
+
+	return 0;
+}
