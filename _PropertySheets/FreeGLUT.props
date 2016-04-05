@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <AdditionalIncludeDirectories>C:\freeglut\include;F:\SkyDrive\Projekty\VS_2013\_Libraries\DevIL-SDK-x86-1.7.8\include;F:\SkyDrive\Projekty\VS_2013\_Libraries\Simple OpenGL Image Library\src</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <AdditionalLibraryDirectories>C:\freeglut\lib;F:\SkyDrive\Projekty\VS_2013\_Libraries\DevIL-SDK-x86-1.7.8\lib;F:\SkyDrive\Projekty\VS_2013\_Libraries\Simple OpenGL Image Library\lib</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SOIL.lib;DevIL.lib;ILU.lib;ILUT.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup />
+</Project>
