@@ -31,7 +31,7 @@ void resize(int width, int height)
 	glMatrixMode(GL_PROJECTION);
 	glLoadIdentity();
 	glFrustum(-ar, ar, -1.0, 1.0, 2.0, 100.0);
-	gluLookAt(0, 0, 5, 0, 0, 0, 0, 1, 0);
+	gluLookAt(0, 0, 45, 0, 0, 0, 0, 1, 0);
 
 	glMatrixMode(GL_MODELVIEW);
 	glLoadIdentity();
@@ -150,7 +150,7 @@ void InitGLUTScene(char* window_name)
 
 void SetCallbackFunctions()
 {
-	//glutReshapeFunc(resize);
+	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
 	glutIdleFunc(idle);
 	glutKeyboardFunc(keyboard);
@@ -188,7 +188,7 @@ void InitObjects()
 	//œciany
 	{
 		MF::Rectangle sciana(68, 2, 0.5, 0.5, 0.5);
-		sciana.SetPosition(0, 20);
+		sciana.SetPosition(0, 22);
 		sciany.push_back(sciana);
 	}
 
@@ -226,10 +226,6 @@ int main(int argc, char *argv[])
 
 	glutInit(&argc, argv);
 	InitGLUTScene("freeglut template");
-
-	glMatrixMode(GL_MODELVIEW);
-	glLoadIdentity();
-	glOrtho(-20.0, 20.0, -20.0, 20.0, -20.0, 20.0);
 
 	SetCallbackFunctions();
 	InitObjects();
