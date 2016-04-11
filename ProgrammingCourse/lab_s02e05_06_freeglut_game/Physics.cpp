@@ -1,7 +1,4 @@
-#define _USE_MATH_DEFINES
-#include <cmath>
 #include "Physics.h"
-
 
 Physics::Physics(double& x, double &y)
 	: m_x(x), m_y(y)

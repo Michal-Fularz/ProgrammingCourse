@@ -1,6 +1,8 @@
 #include <iostream>
-
 #include <Windows.h>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
 
 #define NDEBUG
 #include <GL/freeglut.h>
@@ -8,10 +10,7 @@
 #include "Rectangle.h"
 #include "Circle.h"
 
-#include <vector>
-
-#include <cstdlib>
-#include <ctime>
+#define GAME_LOGIC_REFRESH_TIME			1
 
 MF::Circle pilka(0.6, 1.0, 0.0, 0.0);
 MF::Rectangle paletka(10, 1, 0.0, 1.0, 0.0);
@@ -38,7 +37,7 @@ void resize(int width, int height)
 }
 
 /*logika gry*/
-void loop(int value)
+void logicLoop(int value)
 {
 	//sprawdzanie kolizji ze œcianami
 	for (auto itr = sciany.begin(); itr != sciany.end(); itr++)
@@ -71,7 +70,7 @@ void loop(int value)
 
 	pilka.UpdateFigurePosition();
 
-	glutTimerFunc(1, loop, 0);
+	glutTimerFunc(GAME_LOGIC_REFRESH_TIME, logicLoop, 0);
 }
 
 void idle()
@@ -106,7 +105,12 @@ void display()
 
 void passiveMouseMotion(int mouse_x, int mouse_y)
 {
-	paletka.SetPosition((mouse_x - 300) / 15, -15);
+	double windowWidth = glutGet(GLUT_WINDOW_WIDTH);
+	double windowHeight = glutGet(GLUT_WINDOW_HEIGHT);
+
+	double mouse_gl_x = (((double)mouse_x - (windowWidth / 2)) / windowWidth) * ((windowWidth/windowHeight)*45);
+	
+	paletka.SetPosition(mouse_gl_x, -15);
 	paletka.UpdatePhysicsPosition();
 }
 
@@ -116,12 +120,12 @@ void keyboard(unsigned char key_pressed, int mouse_x, int mouse_y)
 	{
 		case 'a':
 			{
-				paletka.Move(-1.0, 0.0);
+				paletka.Move(-2.0, 0.0);
 			}
 			break;
 		case 'd':
 			{
-				paletka.Move(1.0, 0.0);
+				paletka.Move(2.0, 0.0);
 			}
 			break;
 	}
@@ -137,7 +141,6 @@ void InitGLUTScene(char* window_name)
 
 	glutCreateWindow(window_name);
 
-	// set white as the clear colour
 	glClearColor(1, 1, 1, 1);
 
 	glEnable(GL_DEPTH_TEST);
@@ -155,9 +158,8 @@ void SetCallbackFunctions()
 	glutIdleFunc(idle);
 	glutKeyboardFunc(keyboard);
 	glutPassiveMotionFunc(passiveMouseMotion);
-	glutTimerFunc(5, loop, 0);
 
-	glutSetOption(GLUT_ACTION_ON_WINDOW_CLOSE, GLUT_ACTION_GLUTMAINLOOP_RETURNS); 
+	glutTimerFunc(GAME_LOGIC_REFRESH_TIME, logicLoop, 0);
 }
 
 void InitObjects()
@@ -218,23 +220,16 @@ void InitObjects()
 
 int main(int argc, char *argv[])
 {
-	// it's still possible to use console to print messages
-	printf("Hello openGL world!");
-	// the same can be done with cout / cin
-
 	srand(time(NULL));
 
 	glutInit(&argc, argv);
-	InitGLUTScene("freeglut template");
+	InitGLUTScene("Arkanoid");
 
 	SetCallbackFunctions();
+
 	InitObjects();
 
-	// start GLUT event loop. It ends when user close the window.
 	glutMainLoop();
-
-	// sposób na wykonanie czegoœ po zakoñczeniu gluta
-	printf("End of GLUT");
-
+	
 	return 0;
 }
