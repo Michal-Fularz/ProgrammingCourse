@@ -1,10 +1,10 @@
-#include <windows.h>
 #define _USE_MATH_DEFINES
 #include <cmath>
 #include "Physics.h"
 
 
-Physics::Physics()
+Physics::Physics(double& x, double &y)
+	: m_x(x), m_y(y)
 {
 	//obiekt staly
 	m_g = 0.0;
@@ -17,24 +17,23 @@ Physics::Physics()
 
 	m_granica.xb = 1.0;
 	m_granica.yb = 1.0;
-	Reset();
 }
 
 Physics::~Physics()
 {
 }
 
-void Physics::Odbicie(float alfa_n) //odbicie od sciany charakteryzowanej za pomoca normalnej alfa_n
+void Physics::Odbicie(double alfa_n) //odbicie od sciany charakteryzowanej za pomoca normalnej alfa_n
 {
 	//prawo odbicia "kat padania rowny katowi odbicia (pod warunkiem, ze obiekt wnika do wnetrza)
-	if (fabs(alfa_n - m_alfa_v) > 90.0)
+	if (abs(alfa_n - m_alfa_v) > 90.0)
 		m_alfa_v = alfa_n - (180.0 + m_alfa_v - alfa_n);
 }
 
 void Physics::Aktualizuj(int czas_aktualny) //zmienia polozenie obiektu na podstawie aktualnego czasu
 {
-
-	float delta_t = czas_aktualny - m_czas, v_x, v_y;
+	int delta_t = czas_aktualny - m_czas;
+	double v_x, v_y;
 	v_x = m_v*cos(m_alfa_v / 180.0*M_PI);
 	v_y = m_v*sin(m_alfa_v / 180.0*M_PI);
 	m_x = m_x + v_x*delta_t + 0.5*m_g*cos(m_alfa_g / 180.0*M_PI)*delta_t*delta_t;
@@ -48,24 +47,22 @@ void Physics::Aktualizuj(int czas_aktualny) //zmienia polozenie obiektu na podst
 	//kierunek predkosci
 	m_alfa_v = atan2(v_y, v_x)*180.0 / M_PI;
 
-	m_czas += delta_t;
+	m_czas = czas_aktualny;
 }
 
-void Physics::UstawPredkosc(float _v, float _m_alfa_v) //ustawia poczatkowa predkosc
+void Physics::UstawPredkosc(double _v, double _m_alfa_v) //ustawia poczatkowa predkosc
 {
 	m_v = _v;
 	m_alfa_v = _m_alfa_v;
-	Reset();
 }
 
-void Physics::UstawFizyke(float _g, float _m_alfa_g) //ustawia poczatkowe przyspieszenie
+void Physics::UstawFizyke(double _g, double _m_alfa_g) //ustawia poczatkowe przyspieszenie
 {
 	m_g = _g;
 	m_alfa_g = _m_alfa_g;
-	Reset();
 }
 
-void Physics::UstawGeometrie(float _x, float _y, float _xa, float _ya, float _xb, float _yb)
+void Physics::UstawGeometrie(double _x, double _y, double _xa, double _ya, double _xb, double _yb)
 {
 	m_x = _x;
 	m_y = _y;
@@ -73,7 +70,6 @@ void Physics::UstawGeometrie(float _x, float _y, float _xa, float _ya, float _xb
 	m_granica.xb = _xb;
 	m_granica.ya = _ya;
 	m_granica.yb = _yb;
-	Reset();
 }
 
 int Physics::Kolizja(const Physics& X) //wykrywanie kolizji z innym obiektem (funkcja przekazuje 1 gdy jest kolizja 0 gdy brak)
@@ -95,28 +91,28 @@ int Physics::Kolizja(const Physics& X) //wykrywanie kolizji z innym obiektem (fu
 	if (kolizja)
 	{
 		//znalezienie boku od ktorego nastapi odbicie
-		float alfa_n = ZnajdzNormalna(X);
+		double alfa_n = ZnajdzNormalna(X);
 		Odbicie(alfa_n);
 	}
 
 	return kolizja;
 }
 
-int Physics::WProstokacie(float _x, float _y, const Physics& X)//wykrywa czy dany punkt (_x,_y) znajduje sie wewnatrz pewnego kwadratu
+int Physics::WProstokacie(double _x, double _y, const Physics& X)//wykrywa czy dany punkt (_x,_y) znajduje sie wewnatrz pewnego kwadratu
 {
 	if (((_x < X.m_x + X.m_granica.xb) && (_x > X.m_x + X.m_granica.xa)) && ((_y < X.m_y + X.m_granica.yb) && (_y > X.m_y + X.m_granica.ya)))
 		return 1;
 	else return 0;
 }
 
-float Physics::Odleglosc(float _x, float _y, float _xa, float _ya, float _xb, float _yb)//wyznacza Odleglosc od pewnej prostej przechodzacej przez 2 punkty
+double Physics::Odleglosc(double _x, double _y, double _xa, double _ya, double _xb, double _yb)//wyznacza Odleglosc od pewnej prostej przechodzacej przez 2 punkty
 {
 	//rownanie prostej pzrechodzacej pzrez 2 punkty: y=Ax+B
-	float d;
+	double d;
 	if (_xb != _xa)
 	{
-		float A = (_yb - _ya) / (_xb - _xa);
-		float B = _ya - A * _xa;
+		double A = (_yb - _ya) / (_xb - _xa);
+		double B = _ya - A * _xa;
 		//wyznaczenie Odleglosci:
 		d = fabs(A*_x - _y + B) / sqrt(A*A + 1.0);
 	}
@@ -126,9 +122,9 @@ float Physics::Odleglosc(float _x, float _y, float _xa, float _ya, float _xb, fl
 }
 
 
-float Physics::ZnajdzNormalna(const Physics& X)//znajduje normalna boku ktory jest najblizej srodka obiektu (wynikiem funkcji jest orientacja normalnej);
+double Physics::ZnajdzNormalna(const Physics& X)//znajduje normalna boku ktory jest najblizej srodka obiektu (wynikiem funkcji jest orientacja normalnej);
 {
-	float tab[4];//tablica zawierajaca Odleglosci srodka obiektu od bokow, przyjmuje sie ze odbicie nastepuje od boku lezacego najblizej srodka obiektu
+	double tab[4];//tablica zawierajaca Odleglosci srodka obiektu od bokow, przyjmuje sie ze odbicie nastepuje od boku lezacego najblizej srodka obiektu
 	int min_idx = 0;
 	tab[0] = Odleglosc(m_x, m_y, X.m_x + X.m_granica.xa, X.m_y + X.m_granica.ya, X.m_x + X.m_granica.xa, X.m_y + X.m_granica.yb);
 	tab[1] = Odleglosc(m_x, m_y, X.m_x + X.m_granica.xa, X.m_y + X.m_granica.yb, X.m_x + X.m_granica.xb, X.m_y + X.m_granica.yb);
@@ -142,14 +138,10 @@ float Physics::ZnajdzNormalna(const Physics& X)//znajduje normalna boku ktory je
 	//wyznaczenie normalnych najblizej lezacego boku, (dla aktualnej wersji zawsze leza wzdloz osi X lub Y)
 	switch (min_idx)
 	{
-	case 0: return 180.0;
-	case 1: return 90.0;
-	case 2: return 0.0;
-	case 3: return -90.0;
+		case 0: return 180.0;
+		case 1: return 90.0;
+		case 2: return 0.0;
+		case 3: return -90.0;
 	}
 }
 
-void Physics::Reset() //resetuje czas
-{
-	m_czas = GetTickCount();
-}

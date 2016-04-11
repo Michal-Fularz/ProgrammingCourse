@@ -7,6 +7,7 @@ Figure::Figure(double red, double green, double blue)
 {
 	m_position_x = 0.0;
 	m_position_y = 0.0;
+	m_rotation_z = 0.0;
 	m_flag_show = true;
 }
 

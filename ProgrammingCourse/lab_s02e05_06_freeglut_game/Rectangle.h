@@ -14,6 +14,9 @@ namespace MF
 
 		void Draw();
 
+		void UpdatePhysicsPosition();
+		void UpdateFigurePosition();
+
 	private:
 		double m_size_width;
 		double m_size_height;

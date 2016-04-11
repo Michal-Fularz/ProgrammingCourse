@@ -10,8 +10,13 @@ using namespace MF;
 
 Circle::Circle(double radius, double red, double green, double blue)
 	: Figure(red, green, blue),
+	Physics(m_position_x, m_position_y),
 	m_size_radius(radius)
 {
+	UstawGeometrie(m_position_x, m_position_y,
+		-m_size_radius, -m_size_radius,
+		m_size_radius, m_size_radius
+		);
 }
 
 Circle::~Circle()
@@ -47,3 +52,16 @@ void Circle::Draw()
 		glPopMatrix();
 	}
 }
+
+void Circle::UpdatePhysicsPosition()
+{
+	m_x = m_position_x;
+	m_y = m_position_y;
+}
+
+void Circle::UpdateFigurePosition()
+{
+	m_position_x = m_x;
+	m_position_y = m_y;
+}
+
