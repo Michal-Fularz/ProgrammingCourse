@@ -1,5 +1,4 @@
 #include <iostream>
-#include <Windows.h>
 #include <vector>
 #include <cstdlib>
 #include <ctime>
@@ -10,7 +9,7 @@
 #include "Rectangle.h"
 #include "Circle.h"
 
-#define GAME_LOGIC_REFRESH_TIME			1
+const int GAME_LOGIC_REFRESH_TIME = 1;
 
 MF::Circle pilka(0.6, 1.0, 0.0, 0.0);
 MF::Rectangle paletka(10, 1, 0.0, 1.0, 0.0);
@@ -68,8 +67,6 @@ void logicLoop(int value)
 	//wyliczenie nowej pozycji pi³ki
 	pilka.Aktualizuj(glutGet(GLUT_ELAPSED_TIME));
 
-	pilka.UpdateFigurePosition();
-
 	glutTimerFunc(GAME_LOGIC_REFRESH_TIME, logicLoop, 0);
 }
 
@@ -111,7 +108,6 @@ void passiveMouseMotion(int mouse_x, int mouse_y)
 	double mouse_gl_x = (((double)mouse_x - (windowWidth / 2)) / windowWidth) * ((windowWidth/windowHeight)*45);
 	
 	paletka.SetPosition(mouse_gl_x, -15);
-	paletka.UpdatePhysicsPosition();
 }
 
 void keyboard(unsigned char key_pressed, int mouse_x, int mouse_y)
@@ -129,8 +125,6 @@ void keyboard(unsigned char key_pressed, int mouse_x, int mouse_y)
 			}
 			break;
 	}
-
-	paletka.UpdatePhysicsPosition();
 }
 
 void InitGLUTScene(char* window_name)
@@ -169,6 +163,7 @@ void InitObjects()
 
 	pilka.UstawPredkosc(3e-2, 60);
 	pilka.UstawFizyke(9.81*1E-6, -90);
+	pilka.UstawCzas(glutGet(GLUT_ELAPSED_TIME));
 
 	//paletka
 	paletka.SetPosition(0, -15);
@@ -204,17 +199,6 @@ void InitObjects()
 		MF::Rectangle sciana(4, 60, 0.5, 0.5, 0.5);
 		sciana.SetPosition(-21, 0);
 		sciany.push_back(sciana);
-	}
-
-	paletka.UpdatePhysicsPosition();
-	pilka.UpdatePhysicsPosition();
-	for (auto itr = klocki.begin(); itr != klocki.end(); itr++)
-	{
-		itr->UpdatePhysicsPosition();
-	}
-	for (auto itr = sciany.begin(); itr != sciany.end(); itr++)
-	{
-		itr->UpdatePhysicsPosition();
 	}
 }
 

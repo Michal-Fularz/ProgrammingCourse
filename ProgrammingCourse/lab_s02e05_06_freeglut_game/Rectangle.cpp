@@ -5,9 +5,8 @@
 
 using namespace MF;
 
-Rectangle::Rectangle(double width, double height, double red, double green, double blue)
-	: Figure(red, green, blue), 
-	Physics(m_position_x, m_position_y),
+Rectangle::Rectangle(double width, double height, double red, double green, double blue) 
+	: Physics(),
 	m_size_width(width), m_size_height(height)
 {
 	UstawGeometrie(m_position_x, m_position_y,
@@ -43,16 +42,4 @@ void Rectangle::Draw()
 		}
 		glPopMatrix();
 	}
-}
-
-void Rectangle::UpdatePhysicsPosition()
-{
-	m_x = m_position_x;
-	m_y = m_position_y;
-}
-
-void Rectangle::UpdateFigurePosition()
-{
-	m_position_x = m_x;
-	m_position_y = m_y;
 }
