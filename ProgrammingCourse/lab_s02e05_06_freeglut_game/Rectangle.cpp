@@ -1,5 +1,8 @@
 #include "Rectangle.h"
 
+#define NDEBUG
+#include <GL/freeglut.h>
+
 using namespace MF;
 
 Rectangle::Rectangle(double width, double height, double red, double green, double blue)

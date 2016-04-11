@@ -1,6 +1,12 @@
 #include "Circle.h"
 
+#define NDEBUG
+#include <GL/freeglut.h>
 
+#define _USE_MATH_DEFINES
+#include <cmath>
+
+using namespace MF;
 
 Circle::Circle(double radius, double red, double green, double blue)
 	: Figure(red, green, blue),

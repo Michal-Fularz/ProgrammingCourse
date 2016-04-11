@@ -3,9 +3,6 @@
 #include "Figure.h"
 #include "Physics.h"
 
-#define NDEBUG
-#include <GL/freeglut.h>
-
 namespace MF
 {
 
