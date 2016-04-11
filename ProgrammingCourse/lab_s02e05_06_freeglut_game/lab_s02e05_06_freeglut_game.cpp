@@ -52,6 +52,8 @@ void loop(int value)
 		{
 			itr = klocki.erase(itr);
 			punkty++;
+
+			// to wywo³uje problem - system cls jest wolne
 			//system("cls");
 			//printf("Punkty: %d", punkty);
 		}
@@ -69,7 +71,6 @@ void loop(int value)
 
 	pilka.UpdateFigurePosition();
 
-	//Sleep(1);
 	glutTimerFunc(1, loop, 0);
 }
 
@@ -84,17 +85,18 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
+
 	pilka.Draw();
 	paletka.Draw();
 
-	for (auto item : sciany)
+	for (auto itr = sciany.begin(); itr != sciany.end(); itr++)
 	{
-		item.Draw();
+		itr->Draw();
 	}
 
-	for (auto item : klocki)
+	for (auto itr = klocki.begin(); itr != klocki.end(); itr++)
 	{
-		item.Draw();
+		itr->Draw();
 	}
 
 	glPopMatrix();
@@ -112,27 +114,19 @@ void keyboard(unsigned char key_pressed, int mouse_x, int mouse_y)
 {
 	switch (key_pressed)
 	{
-	case 'w':
-	{
-		paletka.Move(0.0, 0.1);
+		case 'a':
+			{
+				paletka.Move(-1.0, 0.0);
+			}
+			break;
+		case 'd':
+			{
+				paletka.Move(1.0, 0.0);
+			}
+			break;
 	}
-	break;
-	case 's':
-	{
-		paletka.Move(0.0, -0.1);
-	}
-	break;
-	case 'a':
-	{
-		paletka.Move(-1.0, 0.0);
-	}
-	break;
-	case 'd':
-	{
-		paletka.Move(1.0, 0.0);
-	}
-	break;
-	}
+
+	paletka.UpdatePhysicsPosition();
 }
 
 void InitGLUTScene(char* window_name)
