@@ -153,10 +153,7 @@ void InitObjects()
 {
 	//pi³ka
 	pilka.SetPosition(0, -12);
-
-	pilka.UstawPredkosc(3e-2, 60);
-	pilka.UstawFizyke(9.81*1E-6, -90);
-	pilka.UstawCzas(glutGet(GLUT_ELAPSED_TIME));
+	pilka.Ustaw(glutGet(GLUT_ELAPSED_TIME), 3e-2, 60, 9.81*1E-6, -90);
 
 	//paletka
 	paletka.SetPosition(0, -15);

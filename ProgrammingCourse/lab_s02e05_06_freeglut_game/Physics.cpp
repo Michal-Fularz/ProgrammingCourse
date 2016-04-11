@@ -52,21 +52,15 @@ void Physics::Aktualizuj(int czas_aktualny) //zmienia polozenie obiektu na podst
 	m_czas = czas_aktualny;
 }
 
-void Physics::UstawCzas(int czas_aktualny)
+void Physics::Ustaw(int czas_aktualny, double v, double alfa_v, double g, double alfa_g)
 {
 	m_czas = czas_aktualny;
-}
 
-void Physics::UstawPredkosc(double _v, double _m_alfa_v) //ustawia poczatkowa predkosc
-{
-	m_v = _v;
-	m_alfa_v = _m_alfa_v;
-}
+	m_v = v;
+	m_alfa_v = alfa_v;
 
-void Physics::UstawFizyke(double _g, double _m_alfa_g) //ustawia poczatkowe przyspieszenie
-{
-	m_g = _g;
-	m_alfa_g = _m_alfa_g;
+	m_g = g;
+	m_alfa_g = alfa_g;
 }
 
 void Physics::UstawGeometrie(double _x, double _y, double _xa, double _ya, double _xb, double _yb)

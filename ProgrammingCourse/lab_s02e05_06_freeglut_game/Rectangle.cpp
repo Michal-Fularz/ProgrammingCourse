@@ -19,7 +19,6 @@ Rectangle::Rectangle(double width, double height, double red, double green, doub
 	m_colour_blue = blue;
 }
 
-
 Rectangle::~Rectangle()
 {
 }
