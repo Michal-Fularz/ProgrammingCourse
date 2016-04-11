@@ -17,8 +17,6 @@ MF::Rectangle paletka(10, 1, 0.0, 1.0, 0.0);
 std::vector<MF::Rectangle> sciany;
 std::vector<MF::Rectangle> klocki;
 
-int punkty = 0;
-
 /* GLUT callback Handlers */
 void resize(int width, int height)
 {
@@ -49,11 +47,6 @@ void logicLoop(int value)
 		if (pilka.Kolizja(*itr))
 		{
 			itr = klocki.erase(itr);
-			punkty++;
-
-			// to wywo³uje problem - system cls jest wolne
-			//system("cls");
-			//printf("Punkty: %d", punkty);
 		}
 		else
 		{

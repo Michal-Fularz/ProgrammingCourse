@@ -148,6 +148,7 @@ double Physics::ZnajdzNormalna(const Physics& X)//znajduje normalna boku ktory j
 		case 1: return 90.0;
 		case 2: return 0.0;
 		case 3: return -90.0;
+		default: return 0.0;
 	}
 }
 

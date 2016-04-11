@@ -13,6 +13,10 @@ Rectangle::Rectangle(double width, double height, double red, double green, doub
 		-m_size_width / 2, -m_size_height/2,
 		m_size_width / 2, m_size_height / 2
 		);
+
+	m_colour_red = red;
+	m_colour_green = green;
+	m_colour_blue = blue;
 }
 
 

@@ -16,6 +16,10 @@ Circle::Circle(double radius, double red, double green, double blue)
 		-m_size_radius, -m_size_radius,
 		m_size_radius, m_size_radius
 		);
+
+	m_colour_red = red;
+	m_colour_green = green;
+	m_colour_blue = blue;
 }
 
 Circle::~Circle()
@@ -41,7 +45,7 @@ void Circle::Draw()
 					// 180 - pi
 					// i - degInRad
 
-					float degInRad = i*M_PI / 180;
+					double degInRad = i*M_PI / 180;
 					glVertex2f(cos(degInRad)*m_size_radius, sin(degInRad)*m_size_radius);
 				}
 			}
