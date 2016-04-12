@@ -1,6 +1,5 @@
 #pragma once
 
-#include "Figure.h"
 #include "Physics.h"
 
 namespace MF

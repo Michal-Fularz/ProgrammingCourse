@@ -9,7 +9,7 @@
 #include "Rectangle.h"
 #include "Circle.h"
 
-const int GAME_LOGIC_REFRESH_TIME = 1;
+const int GAME_LOGIC_REFRESH_TIME = 5;
 
 MF::Circle pilka(0.6, 1.0, 0.0, 0.0);
 MF::Rectangle paletka(10, 1, 0.0, 1.0, 0.0);
@@ -122,7 +122,7 @@ void keyboard(unsigned char key_pressed, int mouse_x, int mouse_y)
 
 void InitGLUTScene(char* window_name)
 {
-	glutInitWindowSize(600, 600);
+	glutInitWindowSize(1200, 1000);
 	glutInitWindowPosition(40, 40);
 	glutInitDisplayMode(GLUT_RGB | GLUT_DOUBLE | GLUT_DEPTH | GLUT_MULTISAMPLE);
 
@@ -178,13 +178,16 @@ void InitObjects()
 		sciana.SetPosition(0, 22);
 		sciany.push_back(sciana);
 	}
-
+	{
+		MF::Rectangle sciana(68, 2, 0.5, 0.5, 0.5);
+		sciana.SetPosition(0, -22);
+		sciany.push_back(sciana);
+	}
 	{
 		MF::Rectangle sciana(4, 60, 0.5, 0.5, 0.5);
 		sciana.SetPosition(21, 0);
 		sciany.push_back(sciana);
 	}
-
 	{
 		MF::Rectangle sciana(4, 60, 0.5, 0.5, 0.5);
 		sciana.SetPosition(-21, 0);
