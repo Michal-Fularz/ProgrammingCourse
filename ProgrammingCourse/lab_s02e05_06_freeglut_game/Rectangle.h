@@ -4,7 +4,6 @@
 
 namespace MF
 {
-
 	class Rectangle : public Physics
 	{
 	public:
@@ -17,6 +16,4 @@ namespace MF
 		double m_size_width;
 		double m_size_height;
 	};
-
 }
-

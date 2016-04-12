@@ -32,9 +32,9 @@ void Physics::Odbicie(double alfa_n) //odbicie od sciany charakteryzowanej za po
 		m_alfa_v = alfa_n - (180.0 + m_alfa_v - alfa_n);
 }
 
-void Physics::Aktualizuj(int czas_aktualny) //zmienia polozenie obiektu na podstawie aktualnego czasu
+void Physics::Update(int current_time) //zmienia polozenie obiektu na podstawie aktualnego czasu
 {
-	int delta_t = czas_aktualny - m_czas;
+	int delta_t = current_time - m_czas;
 	double v_x, v_y;
 	v_x = m_v*cos(m_alfa_v / 180.0*M_PI);
 	v_y = m_v*sin(m_alfa_v / 180.0*M_PI);
@@ -49,12 +49,12 @@ void Physics::Aktualizuj(int czas_aktualny) //zmienia polozenie obiektu na podst
 	//kierunek predkosci
 	m_alfa_v = atan2(v_y, v_x)*180.0 / M_PI;
 
-	m_czas = czas_aktualny;
+	m_czas = current_time;
 }
 
-void Physics::Ustaw(int czas_aktualny, double v, double alfa_v, double g, double alfa_g)
+void Physics::Ustaw(int current_time, double v, double alfa_v, double g, double alfa_g)
 {
-	m_czas = czas_aktualny;
+	m_czas = current_time;
 
 	m_v = v;
 	m_alfa_v = alfa_v;

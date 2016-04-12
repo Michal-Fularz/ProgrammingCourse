@@ -12,7 +12,6 @@ namespace MF
 		double yb; //maskymalna wartosc y
 	} Border;/*granice okreslaja lewy gorny naroznik (xa,ya) i prawy dolny (xb,yb) */
 
-
 	class Physics : public Figure
 	{
 	protected:
@@ -27,9 +26,9 @@ namespace MF
 	public:
 		Physics();
 		~Physics();
-		void Aktualizuj(int czas_aktualny);//zmienia polozenie obiektu na podstawie aktualnego czasu
+		void Update(int current_time);//zmienia polozenie obiektu na podstawie aktualnego czasu
 		//ustawia poczatkowy czas, predkosc oraz przyspieszenie
-		void Ustaw(int czas_aktualny, double v, double alfa_v, double g, double alfa_g);
+		void Ustaw(int current_time, double v, double alfa_v, double g, double alfa_g);
 		virtual int Kolizja(const Physics& X); //wykrywanie kolizji z innym obiektem (funkcja przekazuje 1 gdy jest kolizja 0 gdy brak)
 
 	protected:
@@ -40,8 +39,5 @@ namespace MF
 		int WProstokacie(double _x, double _y, const Physics& X);//wykrywa czy dany punkt (_x,_y) znajduje sie wewnatrz pewnego prostok¹ta
 		double Odleglosc(double _x, double _y, double _xa, double _ya, double _xb, double _yb);//wyznacza odleglosc od pewnej prostej przechodzacej przez 2 punkty
 		double ZnajdzNormalna(const Physics& X);//znajduje normalna boku ktory jest najblizej srodka obiektu (wynikiem funkcji jest orientacja normalnej);
-
-		
 	};
-
 }

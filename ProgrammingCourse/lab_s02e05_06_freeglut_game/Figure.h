@@ -29,6 +29,4 @@ namespace MF
 
 		bool m_flag_show;
 	};
-
 }
-
