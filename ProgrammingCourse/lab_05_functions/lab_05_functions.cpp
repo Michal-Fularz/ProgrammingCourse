@@ -6,9 +6,16 @@
 // write function subtract
 int subtract(int a, int b);
 
+// write function find max for two arguments (using if)
+// add function find max for three arguments (do not use if, instead use previously prepared function)
+// function overloading
+
 // exercise 2
 // write function swap
 void swap(int &a, int &b);
+
+// extend the swap function with default parameter bool printValueBeforAndAfter = false
+// write weighted average for two arguemnts with weights as defualt arguments
 
 // exercise 3
 // write average function for array

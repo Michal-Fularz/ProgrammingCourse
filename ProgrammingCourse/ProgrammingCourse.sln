@@ -63,8 +63,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02e04_freeglut_inherit
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "LZF_06_loadingTexture", "LZF_06_loadingTexture\LZF_06_loadingTexture.vcxproj", "{5026F226-78DC-4A9B-818D-28D7947335E7}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02e05_06_freeglut_game", "lab_s02e05_06_freeglut_game\lab_s02e05_06_freeglut_game.vcxproj", "{1C70BDD8-4A15-4577-8A83-A58C12235BD2}"
-EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "lab_s02e06_freeglut_arkanoid", "lab_s02e06_freeglut_arkanoid\lab_s02e06_freeglut_arkanoid.vcxproj", "{85F0F4AF-B876-4A23-AE6D-D23EFE50B72A}"
 EndProject
 Global
@@ -377,16 +375,6 @@ Global
 		{5026F226-78DC-4A9B-818D-28D7947335E7}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{5026F226-78DC-4A9B-818D-28D7947335E7}.Release|Win32.ActiveCfg = Release|Win32
 		{5026F226-78DC-4A9B-818D-28D7947335E7}.Release|Win32.Build.0 = Release|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Debug|Any CPU.ActiveCfg = Debug|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Debug|Mixed Platforms.Build.0 = Debug|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Debug|Win32.ActiveCfg = Debug|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Debug|Win32.Build.0 = Debug|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Release|Any CPU.ActiveCfg = Release|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Release|Mixed Platforms.ActiveCfg = Release|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Release|Mixed Platforms.Build.0 = Release|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Release|Win32.ActiveCfg = Release|Win32
-		{1C70BDD8-4A15-4577-8A83-A58C12235BD2}.Release|Win32.Build.0 = Release|Win32
 		{85F0F4AF-B876-4A23-AE6D-D23EFE50B72A}.Debug|Any CPU.ActiveCfg = Debug|Win32
 		{85F0F4AF-B876-4A23-AE6D-D23EFE50B72A}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
 		{85F0F4AF-B876-4A23-AE6D-D23EFE50B72A}.Debug|Mixed Platforms.Build.0 = Debug|Win32

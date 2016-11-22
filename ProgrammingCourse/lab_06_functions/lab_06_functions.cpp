@@ -26,6 +26,9 @@ int main(void)
 	// subtask 4 - add shuffle function - it takes an array and shuffles the values - randomly generate two indicies and swap values that are stored in the array under theses indices
 	// subtask 5 - create a function play_war that compars two players decks and finds the winner (compared first card from deck 1 with first card with deck one, the higher card gets the player one point. Draws does not give any points.
 
+	// int max(int* array, int arraySize);
+	// void fillTableWithRandomValues(int* array, int arraySize, int valueMin=0, int valueMax=10);
+
 	std::cout << "Press any key to finish." << std::endl;
 	_getch();
 
