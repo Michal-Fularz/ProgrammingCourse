@@ -1,5 +1,6 @@
 #include "lab_07_library.h"
 #include <cmath>
+#include <iostream>
 
 int modulo_1(int value, int dividend)
 {
@@ -47,4 +48,60 @@ float calculate_standard_deviation(int* values, int number_of_values)
 	float standard_deviation = sqrt(sum_of_squared_differences / number_of_values);
 
 	return standard_deviation;
+}
+
+int potega(int liczba, int doPotegi)
+{
+	int wynik = 1;
+
+	if (doPotegi > 0)
+	{
+		wynik = liczba;
+
+		for (int i = 1; i < doPotegi; i++)
+		{
+			wynik = wynik * liczba;
+		}
+	}
+
+	return wynik;
+}
+
+void sort(int* arr, int arr_size)
+{
+	for (int i = 0; i < arr_size; ++i)
+	{
+		for (int j = 0; j < (arr_size - 1); ++j)
+		{
+			if (arr[j] < arr[j + 1])
+			{
+				std::swap(arr[j], arr[j + 1]);
+			}
+		}
+	}
+}
+
+void print_array(int* arr, int arr_size)
+{
+	for (int i = 0; i < arr_size; i++)
+	{
+		std::cout << arr[i] << ", ";
+	}
+	std::cout << std::endl;
+}
+
+float median(int* arr, int arr_size)
+{
+	float result = 0;
+
+	if (arr_size % 2 == 0)
+	{
+		result = ((float)arr[arr_size / 2 - 1] + (float)arr[arr_size / 2]) / 2;
+	}
+	else
+	{
+		result = (float)arr[arr_size / 2];
+	}
+
+	return result;
 }
