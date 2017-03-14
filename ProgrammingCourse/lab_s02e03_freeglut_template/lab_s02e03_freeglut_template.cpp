@@ -54,13 +54,15 @@ void display()
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	glPushMatrix();
-	DrawRectangle(2.0, 1.0);
+	{
+		DrawRectangle(2.0, 1.0);
+	}
 	glPopMatrix();
 
 	glutSwapBuffers();
 }
 
-void InitGLUTScene(char* window_name)
+void InitGLUTScene(const char* window_name)
 {
 	glutInitWindowSize(800, 600);
 	glutInitWindowPosition(40, 40);
@@ -89,8 +91,7 @@ void SetCallbackFunctions()
 int main(int argc, char *argv[])
 {
 	// it's still possible to use console to print messages
-	printf("Hello openGL world!");
-	// the same can be done with cout / cin
+	std::cout << "Hello openGL world!" << std::endl;
 
 	glutInit(&argc, argv);
 	InitGLUTScene("freeglut template");
