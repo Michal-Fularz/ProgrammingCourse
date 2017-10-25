@@ -23,12 +23,40 @@ void Problem_CinGetline(void)
 	_getch();
 }
 
+void Problem_LeibnizPI(void)
+{
+	// why the student version works while it is different than the Leibniz firmula on wiki
+	double wynik = 0, n = 3;
+
+	// student version
+	for (int i = 1; i < n; i++)
+	{
+		wynik = wynik + pow(-1, i + 1) / (2 * i - 1); // ta linijka
+
+	}
+	std::cout << 4 * wynik << std::endl;
+
+	// original Leibniz formula
+	wynik = 0;
+	for (int i = 0; i < n; i++)
+	{
+		wynik = wynik + pow(-1, i) / (2 * i + 1); // ta linijka
+
+	}
+	std::cout << 4 * wynik << std::endl;
+
+	_getch();
+}
+
 /*
 Funkcja g³ówna programu
 o nazwie main
 */
 int main(void)
 {
+	Problem_LeibnizPI();
+	Problem_CinGetline();
+
 	int liczbaNiedostatecznych;
 	float sredniaOcen;
 
@@ -46,8 +74,6 @@ int main(void)
 
 	// czekaj na znak
 	_getch();
-
-	Problem_CinGetline();
 
 	return 1;
 }
