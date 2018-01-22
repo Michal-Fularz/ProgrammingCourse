@@ -25,7 +25,7 @@ void Problem_CinGetline(void)
 
 void Problem_LeibnizPI(void)
 {
-	// why the student version works while it is different than the Leibniz firmula on wiki
+	// why the student version works while it is different than the Leibniz formula on wiki
 	double wynik = 0, n = 3;
 
 	// student version

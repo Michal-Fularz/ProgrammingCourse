@@ -74,6 +74,6 @@ void exercise_6(void);
 void exercise_7(void);
 void exercise_8(void);
 void exercise_9(void);
-
+void exercise_10(void);
 
 #endif

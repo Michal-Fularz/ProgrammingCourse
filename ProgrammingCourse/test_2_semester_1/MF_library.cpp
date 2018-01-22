@@ -20,6 +20,11 @@ void showMenu(void)
 	cout << "exercise 3 - press 3" << endl;
 	cout << "exercise 4 - press 4" << endl;
 	cout << "exercise 5 - press 5" << endl;
+	cout << "exercise 6 - press 6" << endl;
+	cout << "exercise 7 - press 7" << endl;
+	cout << "exercise 8 - press 8" << endl;
+	cout << "exercise 9 - press 9" << endl;
+	cout << "exercise 10 - press A" << endl;
 	cout << "exit - press x or X" << endl;
 }
 
@@ -512,5 +517,26 @@ void exercise_9(void)
 	for (auto item : listOfTimesFromFile)
 	{
 		std::cout << item << endl;
+	}
+}
+
+void exercise_10(void)
+{
+	fstream myfile("../_data/students2018.txt", ios::in);
+	if (myfile.is_open())
+	{
+		while (!myfile.eof())
+		{
+			char nameLetter;
+			char sureNameLetter;
+			int index;
+			double grade;
+			myfile >> nameLetter >> sureNameLetter >> index >> grade;
+			std::cout << nameLetter << ", " << sureNameLetter << ", " << index << ", " << grade << endl;
+		}
+	}
+	else
+	{
+		std::cout << "File not opened." << std::endl;
 	}
 }
