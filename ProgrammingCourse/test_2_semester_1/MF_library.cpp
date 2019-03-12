@@ -9,8 +9,9 @@ using namespace std;
 
 #include <istream>
 #include <ostream>
-
 #include <fstream>
+
+#include <string>
 
 void showMenu(void)
 {
@@ -25,6 +26,7 @@ void showMenu(void)
 	cout << "exercise 8 - press 8" << endl;
 	cout << "exercise 9 - press 9" << endl;
 	cout << "exercise 10 - press A" << endl;
+	cout << "exercise 11 - press B" << endl;
 	cout << "exit - press x or X" << endl;
 }
 
@@ -538,5 +540,39 @@ void exercise_10(void)
 	else
 	{
 		std::cout << "File not opened." << std::endl;
+	}
+}
+
+void exercise_11(void)
+{
+	fstream myfile("../_data/cars.txt", ios::in);
+	if (myfile.is_open())
+	{
+		while (!myfile.eof())
+		{
+			std::string brand;
+			std::string model;
+			float fuel;
+			int year;
+
+			myfile >> brand >> model >> fuel >> year;
+			std::cout << brand << ", " << model << ", " << fuel << ", " << year << endl;
+		}
+	}
+	else
+	{
+		std::cout << "File not opened." << std::endl;
+	}
+
+	std::string a = "CAla";
+	std::string b = "BABA";
+
+	if (a > b)
+	{
+		std::cout << a << std::endl;
+	}
+	else
+	{
+		std::cout << b << std::endl;
 	}
 }

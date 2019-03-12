@@ -73,6 +73,11 @@ int main(void)
 			exercise_10();
 		}
 		break;
+		case 'B':
+		{
+			exercise_11();
+		}
+		break;
 		case 'x':
 		case 'X':
 			cout << "Bye, bye, you will be missed!" << endl;
