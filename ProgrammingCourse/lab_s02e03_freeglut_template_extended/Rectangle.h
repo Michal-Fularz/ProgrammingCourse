@@ -1,32 +1,34 @@
 #pragma once
 
+
 namespace MF
 {
-
 	class Rectangle
 	{
 	private:
-		double m_width;
-		double m_height;
+		double width_;
+		double height_;
 
-		double m_position_x;
-		double m_position_y;
+		double position_x_;
+		double position_y_;
 
-		double m_rotation_z;
+		double rotation_z_;
 
-		double m_colour_red;
-		double m_colour_green;
-		double m_colour_blue;
-
+		double colour_red_;
+		double colour_green_;
+		double colour_blue_;
 
 	public:
-		Rectangle(double x, double y, double red, double green, double blue);
+		Rectangle(
+			double x, double y, 
+			double red, double green, double blue
+		);
 		~Rectangle();
 
 		void Draw();
 		void Move(double dx, double dy);
-		void ChangeColour(double red, double green, double blue);
+		void ChangeColour(
+			double red, double green, double blue
+		);
 	};
-
 }
-

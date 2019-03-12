@@ -6,6 +6,7 @@
 #include "Rectangle.h"
 
 MF::Rectangle rect1(2.0, 1.0, 1.0, 0.0, 0.0);
+MF::Rectangle rect2(0.5, 0.5, 0.0, 1.0, 0.0);
 
 /* GLUT callback Handlers */
 void resize(int width, int height)
@@ -35,6 +36,7 @@ void display()
 
 	glPushMatrix();
 	rect1.Draw();
+	rect2.Draw();
 	glPopMatrix();
 
 	glutSwapBuffers();
@@ -87,6 +89,11 @@ void SetCallbackFunctions()
 	glutKeyboardFunc(keyboard);
 }
 
+void InitObjects()
+{
+	rect2.Move(1.5, 0.0);
+}
+
 int main(int argc, char *argv[])
 {
 	// it's still possible to use console to print messages
@@ -96,6 +103,7 @@ int main(int argc, char *argv[])
 	glutInit(&argc, argv);
 	InitGLUTScene("freeglut template extended");
 	SetCallbackFunctions();
+	InitObjects();
 
 	// start GLUT event loop. It ends when user close the window.
 	glutMainLoop();
