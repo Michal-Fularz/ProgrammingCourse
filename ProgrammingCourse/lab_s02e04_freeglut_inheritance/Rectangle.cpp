@@ -5,34 +5,33 @@
 
 using namespace MF;
 
-Rectangle::Rectangle(double width, double height, double red, double green, double blue)
-	: Figure(red, green, blue), 
-	m_size_width(width), m_size_height(height)
-{
-}
-
-
-Rectangle::~Rectangle()
+Rectangle::Rectangle(
+	float width, float height,
+	float x, float y,
+	float red, float green, float blue
+): 
+Figure(x, y, red, green, blue),
+width_(width), height_(height)
 {
 }
 
 void Rectangle::Draw()
 {
-	if (m_flag_show)
+	if (flag_show_)
 	{
 		glPushMatrix();
 		{
-			glTranslated(m_position_x, m_position_y, 0.0);
-			glRotated(m_rotation_z, 0.0, 0.0, 1.0);
+			glTranslated(position_x_, position_y_, 0.0);
+			glRotated(rotation_z_, 0.0, 0.0, 1.0);
 
-			glColor3d(m_colour_red, m_colour_green, m_colour_blue);
+			glColor3d(colour_red_, colour_green_, colour_blue_);
 
 			glBegin(GL_POLYGON);
 			{
-				glVertex3d(-m_size_width / 2, m_size_height / 2, 0);
-				glVertex3d(m_size_width / 2, m_size_height / 2, 0);
-				glVertex3d(m_size_width / 2, -m_size_height / 2, 0);
-				glVertex3d(-m_size_width / 2, -m_size_height / 2, 0);
+				glVertex3d(-width_ / 2, height_ / 2, 0);
+				glVertex3d(width_ / 2, height_ / 2, 0);
+				glVertex3d(width_ / 2, -height_ / 2, 0);
+				glVertex3d(-width_ / 2, -height_ / 2, 0);
 			}
 			glEnd();
 		}

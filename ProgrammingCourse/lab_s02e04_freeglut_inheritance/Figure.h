@@ -3,34 +3,34 @@
 
 namespace MF
 {
-
 	class Figure
 	{
 	public:
-		Figure(double red, double green, double blue);
-		~Figure();
-
+		Figure(
+			float x, float y,
+			float red, float green, float blue
+		);
+		virtual ~Figure() = default;
+		
 		void Show();
 		void Hide();
-		void Move(double dx, double dy);
-		void SetPosition(double x, double y);
-		void Rotate(double dgamma);
-		void ChangeColour(double r, double g, double b);
+		void Move(float dx, float dy);
+		void SetPosition(float x, float y);
+		void Rotate(float dRotationZ);
+		void ChangeColour(float r, float g, float b);
 
 		virtual void Draw() = 0;
 
 	protected:
-		double m_position_x;
-		double m_position_y;
+		float position_x_;
+		float position_y_;
 
-		double m_rotation_z;
+		float rotation_z_;
 
-		double m_colour_red;
-		double m_colour_green;
-		double m_colour_blue;
+		float colour_red_;
+		float colour_green_;
+		float colour_blue_;
 
-		bool m_flag_show;
+		bool flag_show_;
 	};
-
 }
-

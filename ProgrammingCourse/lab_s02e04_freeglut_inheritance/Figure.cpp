@@ -2,49 +2,47 @@
 
 using namespace MF;
 
-Figure::Figure(double red, double green, double blue)
-	: m_colour_red(red), m_colour_green(green), m_colour_blue(blue)
+Figure::Figure(
+	float x, float y,
+	float red, float green, float blue
+):
+position_x_(x), position_y_(y),
+colour_red_(red), colour_green_(green), colour_blue_(blue)
 {
-	m_position_x = 0.0;
-	m_position_y = 0.0;
-	m_rotation_z = 0.0;
-	m_flag_show = true;
-}
-
-Figure::~Figure()
-{
+	rotation_z_ = 0.0f;
+	flag_show_ = true;
 }
 
 void Figure::Show()
 {
-	m_flag_show = true;
+	flag_show_ = true;
 }
 
 void Figure::Hide()
 {
-	m_flag_show = false;
+	flag_show_ = false;
 }
 
-void Figure::Move(double dx, double dy)
+void Figure::Move(float dx, float dy)
 {
-	m_position_x += dx;
-	m_position_y += dy;
+	position_x_ += dx;
+	position_y_ += dy;
 }
 
-void Figure::SetPosition(double x, double y)
+void Figure::SetPosition(float x, float y)
 {
-	m_position_x = x;
-	m_position_y = y;
+	position_x_ = x;
+	position_y_ = y;
 }
 
-void Figure::Rotate(double drotation_z)
+void Figure::Rotate(float dRotationZ)
 {
-	m_rotation_z += drotation_z;
+	rotation_z_ += dRotationZ;
 }
 
-void Figure::ChangeColour(double r, double g, double b)
+void Figure::ChangeColour(float r, float g, float b)
 {
-	m_colour_red = r;
-	m_colour_green = g;
-	m_colour_blue = b;
+	colour_red_ = r;
+	colour_green_ = g;
+	colour_blue_ = b;
 }

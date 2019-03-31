@@ -4,19 +4,20 @@
 
 namespace MF
 {
-
 	class Rectangle : public Figure
 	{
 	public:
-		Rectangle(double width, double height, double red, double green, double blue);
-		~Rectangle();
+		Rectangle(
+			float width, float height,
+			float x, float y,
+			float red, float green, float blue
+		);
+		~Rectangle() = default;
 
 		void Draw();
 
 	private:
-		double m_size_width;
-		double m_size_height;
+		double width_;
+		double height_;
 	};
-
 }
-

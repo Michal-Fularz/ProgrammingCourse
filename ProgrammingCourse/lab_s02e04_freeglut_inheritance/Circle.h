@@ -7,13 +7,16 @@ namespace MF
 	class Circle : public Figure
 	{
 	public:
-		Circle(double radius, double red, double green, double blue);
-		~Circle();
+		Circle(
+			float radius,
+			float x, float y,
+			float red, float green, float blue
+		);
+		~Circle() = default;
 
-		void Draw();
+		void Draw() override;
 
 	private:
-		double m_size_radius;
+		double radius_;
 	};
 }
-
