@@ -116,7 +116,7 @@ void keyboard(
 	}
 }
 
-void InitGLUTScene(char* window_name)
+void InitGLUTScene(const char* window_name)
 {
 	glutInitWindowSize(800, 600);
 	glutInitWindowPosition(40, 40);
