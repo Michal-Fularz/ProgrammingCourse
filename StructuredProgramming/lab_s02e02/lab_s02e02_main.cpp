@@ -1,40 +1,37 @@
-#include <iostream>
-#include <string>
 #include <fstream>
 #include <iostream>
+#include <string>
 #include <sstream>
 #include <vector>
 
 #include "lab_s02e02_MF.h"
 
-using namespace std;
 
 void ex_1()
 {
+    std::cout << "Exercise 1" << std::endl;
+
     std::string word = "racecar";
     do
     {
-        cout << "Enter word" << endl;
-        cin >> word;
+        std::cout << "Enter a word to check if it is a palindrome or type exit to break the loop" << std::endl;
+        std::cin >> word;
 
         if (is_palindrome(word)) {
-            std::cout << "To palindrom!" << std::endl;
+            std::cout << "It is a palindrome!" << std::endl;
         } else {
             std::cout << "Nope" << std::endl;
         }
     }
     while(word != "exit");
+
+    std::cout << std::endl << std::endl;
 }
 
-void ex_5()
+void sort_ex_6(std::vector<int> a)
 {
-//    std::string input = "Ala ma kota, kot zjadl Ale!";
-//    std::string output = find_and_replace(input, "kot", "hefalump");
-    // wynik: "Ala ma hefalumpa, hefalump zjadl Ale!"
-}
+    // this is just an implementation of bubble sorting algorithm based on the diagram
 
-void sort_ex_6(vector<int> a)
-{
     int rozmiar = a.size();
     bool flaga_zamiana = false;
 
@@ -47,7 +44,7 @@ void sort_ex_6(vector<int> a)
         {
             if(a[i] > a[i+1])
             {
-                swap(a[i], a[i+1]);
+                std::swap(a[i], a[i+1]);
                 flaga_zamiana = true;
             }
             i++;
@@ -55,15 +52,15 @@ void sort_ex_6(vector<int> a)
         rozmiar--;
     }
     while(flaga_zamiana);
-
 }
 
 void ex_8()
 {
-    // lokalizacja względna
-    std::fstream file2("./../data/kursy_usd_eur.csv"); //plik znajduje się w tym samym katalogu co pliki źródłowe projektu, inaczej trzeba podać pełną ścieżkę np. "c:/Users/nazwa_uzytkownika/Downloads/kursy_usd_eur.csv"
-    // lokalizacja bezwzględna
-    std::fstream file("F:/Projects/university_courses/ProgrammingCourse/StructuredProgramming/data/kursy_usd_eur.csv");
+    std::cout << "Exercise 8" << std::endl;
+    // relative location - works on each machine if the files are located in the same way relative to each other
+    std::fstream file("./../data/kursy_usd_eur.csv"); //plik znajduje się w tym samym katalogu co pliki źródłowe projektu, inaczej trzeba podać pełną ścieżkę np. "c:/Users/nazwa_uzytkownika/Downloads/kursy_usd_eur.csv"
+    // absolute location - unless all the folders on the path are named the same this will not work on different computers. This way should be avoided
+    std::fstream file2("F:/Projects/university_courses/ProgrammingCourse/StructuredProgramming/data/kursy_usd_eur.csv");
     std::vector<Exchange_rate> rates;
     if (file.is_open()) {
         std::string line;
@@ -83,37 +80,43 @@ void ex_8()
         }
     }
 
+    std::cout << "Data from the file:" << std::endl;
     for(const auto& r: rates)
     {
-        cout << "date: " << r.date << ", usd: " << r.usd;
-        cout << "eur: " << r.eur << ", table_id: " << r.table_id << endl;
+        std::cout << "date: " << r.date << ", usd: " << r.usd;
+        std::cout << "eur: " << r.eur << ", table_id: " << r.table_id << std::endl;
     }
-    cout << endl << endl;
-    sort_usd(rates);
-    cout << endl << endl;
-    for(const auto& r: rates)
-    {
-        cout << "date: " << r.date << ", usd: " << r.usd;
-        cout << "eur: " << r.eur << ", table_id: " << r.table_id << endl;
-    }
+    std::cout << std::endl << std::endl;
 
+    sort_usd(rates);
+
+    std::cout << "Data sorted:" << std::endl;
+    for(const auto& r: rates)
+    {
+        std::cout << "date: " << r.date << ", usd: " << r.usd;
+        std::cout << "eur: " << r.eur << ", table_id: " << r.table_id << std::endl;
+    }
+    std::cout << std::endl << std::endl;
+
+    std::cout << "Ten entries with the largest amount of USD:" << std::endl;
     for(size_t i=0; i<10 && i<rates.size(); i++)
     {
         rates[i].print();
-        cout << endl;
     }
+    std::cout << std::endl << std::endl;
 }
 
 int main()
 {
-    cout << "Hello lab 2!" << endl;
+    std::cout << "Hello lab 2!" << std::endl;
 
     ex_1();
-//    ex_5();
     ex_8();
-    string text;
-    getline(cin, text);
-    cout << text;
+
+    // getline allows reading input with spaces
+    std::string text;
+    getline(std::cin, text);
+    std::cout << text;
 
     return 0;
 }

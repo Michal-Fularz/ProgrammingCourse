@@ -1,5 +1,3 @@
-//#ifndef LAB_S02E02_MF_H
-//#define LAB_S02E02_MF_H
 #pragma once
 
 #include <string>
@@ -18,5 +16,3 @@ struct Exchange_rate
 void sort_usd(std::vector<Exchange_rate>& rates);
 
 bool is_palindrome(std::string word);
-
-//#endif // LAB_S02E02_H
