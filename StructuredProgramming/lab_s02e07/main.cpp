@@ -2,10 +2,13 @@
 #include <SFML/Graphics.hpp>
 
 #include <iostream>
+#include <cmath>
 
 int main() {
+	std::cout << "Hello lab07!" << std::endl;
+	
     // create the window
-    sf::RenderWindow window(sf::VideoMode(800, 600), "My window");
+    sf::RenderWindow window(sf::VideoMode(800, 600), "Lab07");
 
     // create some shapes
     sf::CircleShape circle(100.0);
@@ -15,6 +18,10 @@ int main() {
     sf::RectangleShape rectangle(sf::Vector2f(120.0, 60.0));
     rectangle.setPosition(500.0, 400.0);
     rectangle.setFillColor(sf::Color(100, 50, 250));
+	
+	float rectangle_velocity_x = 50;
+    float rectangle_velocity_y = -150;
+    float rectangle_angular_velocity = 10;
 
     sf::ConvexShape triangle;
     triangle.setPointCount(3);
@@ -27,16 +34,12 @@ int main() {
 
     sf::Clock clock;
 
-    int rectangle_velocity_x = 100;
-    int rectangle_velocity_y = 150;
-    int rectangle_angular_velocity = 10;
-
     int print_counter = 0;
 
+	window.setFramerateLimit(60);
     // run the program as long as the window is open
     while (window.isOpen()) {
-        sf::Time elapsed = clock.restart();
-
+		// EVENTS
         // check all the window's events that were triggered since the last iteration of the loop
         sf::Event event;
         while (window.pollEvent(event)) {
@@ -45,51 +48,41 @@ int main() {
                 window.close();
         }
 
-        // clear the window with black color
-        window.clear(sf::Color::Black);
-
-        rectangle.move(rectangle_velocity_x * elapsed.asSeconds(), rectangle_velocity_y * elapsed.asSeconds());
-        rectangle.rotate(rectangle_angular_velocity * elapsed.asSeconds());
-
-        // draw everything here...
-        window.draw(circle);
-        window.draw(rectangle);
-        window.draw(triangle);
+		// LOGIC
+		sf::Time elapsed = clock.restart();
+		rectangle.move(
+            rectangle_velocity_x*elapsed.asSeconds(),
+            rectangle_velocity_y*elapsed.asSeconds()
+        );
+        rectangle.rotate(rectangle_angular_velocity*elapsed.asSeconds());
 
         sf::FloatRect rectangle_bounds = rectangle.getGlobalBounds();
 
-        bool bounce = false;
         if(rectangle_bounds.top <= 0)
         {
-            rectangle_velocity_y = abs(rectangle_velocity_y);
-            bounce = true;
+            rectangle_velocity_y = std::abs(rectangle_velocity_y);
+            rectangle.setFillColor(sf::Color(255, 0, 0));
         }
-        if(rectangle_bounds.top + rectangle_bounds.height >= window.getSize().y)
+        if(rectangle_bounds.top+rectangle_bounds.height >= window.getSize().y)
         {
-            rectangle_velocity_y = -abs(rectangle_velocity_y);
-            bounce = true;
+            rectangle_velocity_y = -std::abs(rectangle_velocity_y);
+            rectangle.setFillColor(sf::Color(0, 255, 0));
         }
         if(rectangle_bounds.left <= 0)
         {
-            rectangle_velocity_x = abs(rectangle_velocity_x);
-            bounce = true;
+            rectangle_velocity_x = std::abs(rectangle_velocity_x);
+            rectangle.setFillColor(sf::Color(0, 0, 255));
         }
-        if(rectangle_bounds.left + rectangle_bounds.width >= window.getSize().x)
+        if(rectangle_bounds.left+rectangle_bounds.width >= window.getSize().x)
         {
-            rectangle_velocity_x = -abs(rectangle_velocity_x);
-            bounce = true;
-        }
-        if(bounce)
-        {
-            int R = std::rand() % 255;
-            int G = std::rand() % 255;
-            int B = std::rand() % 255;
-            rectangle.setFillColor(sf::Color(R, G, B));
+            rectangle_velocity_x = -std::abs(rectangle_velocity_x);
+            rectangle.setFillColor(sf::Color(255, 0, 255));
         }
 
-        if(print_counter == 1000)
+        if(print_counter == 50)
         {
-            std::cout << elapsed.asMicroseconds() << " ms - " << 1.0 / elapsed.asSeconds() << " fps"  << std::endl;
+            std::cout << "Elapsed time: " << elapsed.asMicroseconds() << ", fps: " << 1/elapsed.asSeconds() << std::endl;
+
             std::cout << rectangle_bounds.top << " " << rectangle_bounds.left << " " ;
             std::cout << rectangle_bounds.width << " " << rectangle_bounds.height << std::endl;
             print_counter = 0;
@@ -98,6 +91,15 @@ int main() {
         {
             print_counter++;
         }
+
+		// DRAW
+        // clear the window with black color
+        window.clear(sf::Color::Black);
+
+        // draw everything here...
+        window.draw(circle);
+        window.draw(rectangle);
+        window.draw(triangle);
 
         // end the current frame
         window.display();
