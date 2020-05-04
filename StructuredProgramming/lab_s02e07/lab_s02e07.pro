@@ -6,7 +6,7 @@ CONFIG -= qt
 INCLUDEPATH += "C:/SFML-2.5.1/include"
 
 SOURCES += \
-        main.cpp
+    lab_s02e07.cpp
 
 LIBS += -L"C:/SFML-2.5.1/lib"
 CONFIG(debug, debug|release){
