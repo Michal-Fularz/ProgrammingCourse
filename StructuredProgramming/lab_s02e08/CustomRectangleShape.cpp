@@ -1,5 +1,12 @@
-#include "CustomRectangleShape.h"
+#include "customrectangleshape.h"
 
+CustomRectangleShape::CustomRectangleShape(
+) : CustomRectangleShape(
+          sf::Vector2f(100, 100),
+          sf::Vector2f(50, 50)
+      )
+{
+}
 
 CustomRectangleShape::CustomRectangleShape(
         const sf::Vector2f &size,
@@ -9,103 +16,130 @@ CustomRectangleShape::CustomRectangleShape(
     setPosition(position);
 }
 
-void CustomRectangleShape::setSpeed(int speed_x, int speed_y, int speed_r)
+void CustomRectangleShape::setSpeed(
+        int speed_x,
+        int speed_y,
+        int speed_r
+)
 {
-    m_speed_x = speed_x;
-    m_speed_y = speed_y;
-    m_speed_r = speed_r;
-}
-
-bool CustomRectangleShape::setBounds(int left, int right, int top, int bottom)
-{
-    if(left <= right && top <= bottom)
-    {
-        m_left_bound = left;
-        m_right_bound = right;
-        m_top_bound = top;
-        m_bottom_bound = bottom;
-        return true;
-    }
-    return false;
-}
-
-void CustomRectangleShape::select()
-{
-    m_is_selected = true;
-}
-
-void CustomRectangleShape::unselect()
-{
-    m_is_selected = false;
+    speed_x_ = speed_x;
+    speed_y_ = speed_y;
+    speed_r_ = speed_r;
 }
 
 void CustomRectangleShape::animate(const sf::Time &elapsed)
 {
-    if(!m_is_selected)
+    if(!is_selected_)
     {
-        move(elapsed.asSeconds() * m_speed_x, elapsed.asSeconds() * m_speed_y);
-        rotate(elapsed.asSeconds() * m_speed_r);
+        move(
+            speed_x_*elapsed.asSeconds(),
+            speed_y_*elapsed.asSeconds()
+        );
+        rotate(speed_r_*elapsed.asSeconds());
         bounce();
     }
-}
-void CustomRectangleShape::moveInDirection(const sf::Time &elapsed, const sf::Keyboard::Key &key)
-{
-    if(m_is_selected)
+    else
     {
-        sf::FloatRect rect = getGlobalBounds();
-        switch(key)
-        {
-            case sf::Keyboard::Left:
-                if(rect.left > m_left_bound)
-                    move(-elapsed.asSeconds() * abs(m_speed_x), 0);
-                break;
-            case sf::Keyboard::Right:
-                if(rect.left + rect.width < m_right_bound)
-                    move(elapsed.asSeconds() * abs(m_speed_x), 0);
-                break;
-            case sf::Keyboard::Up:
-                if(rect.top > m_top_bound)
-                    move(0, -elapsed.asSeconds() * abs(m_speed_y));
-                break;
-            case sf::Keyboard::Down:
-                if(rect.top + rect.height < m_bottom_bound)
-                    move(0, elapsed.asSeconds() * abs(m_speed_y));
-                break;
-            default:
-                break;
+        sf::FloatRect rectangle_bounds = getGlobalBounds();
+
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
+            if(rectangle_bounds.top > bounds_.top)
+            {
+                move(
+                    0,
+                    -100*elapsed.asSeconds()
+                );
+            }
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
+            if(rectangle_bounds.top+rectangle_bounds.height < bounds_.bottom)
+            move(
+                0,
+                100*elapsed.asSeconds()
+            );
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+            move(
+                -100*elapsed.asSeconds(),
+                0
+            );
+        }
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+            move(
+                100*elapsed.asSeconds(),
+                0
+            );
         }
     }
 }
-bool CustomRectangleShape::isClicked(const sf::Vector2i &mouse_position) const
+
+void CustomRectangleShape::setBounds(int left, int right, int top, int bottom)
 {
-    sf::FloatRect rect = getGlobalBounds();
-    if(rect.left <= mouse_position.x && (rect.left + rect.width) >= mouse_position.x)
-    {
-        if(rect.top <= mouse_position.y && (rect.top + rect.height) >= mouse_position.y)
-        {
-            return true;
-        }
-    }
-    return false;
+    bounds_.left = left;
+    bounds_.right = right;
+    bounds_.top = top;
+    bounds_.bottom = bottom;
+}
+
+void CustomRectangleShape::setBounds(const sf::IntRect &rect)
+{
+    setBounds(
+            rect.left, rect.left+rect.width,
+            rect.top, rect.top+rect.height
+   );
 }
 
 void CustomRectangleShape::bounce()
 {
-    sf::FloatRect rect = getGlobalBounds();
-    if(rect.left <= m_left_bound)
+    sf::FloatRect rectangle_bounds = getGlobalBounds();
+
+    if(rectangle_bounds.top <= bounds_.top)
     {
-        m_speed_x = abs(m_speed_x);
+        speed_y_ = std::abs(speed_y_);
     }
-    if(rect.left + rect.width >= m_right_bound)
+    if(rectangle_bounds.top+rectangle_bounds.height >= bounds_.bottom)
     {
-        m_speed_x = -abs(m_speed_x);
+        speed_y_ = -std::abs(speed_y_);
     }
-    if(rect.top <= m_top_bound)
+    if(rectangle_bounds.left <= bounds_.left)
     {
-        m_speed_y = abs(m_speed_y);
+        speed_x_ = std::abs(speed_x_);
     }
-    if(rect.top + rect.height >= m_bottom_bound)
+    if(rectangle_bounds.left+rectangle_bounds.width >= bounds_.right)
     {
-        m_speed_y = -abs(m_speed_y);
+        speed_x_ = -std::abs(speed_x_);
+    }
+}
+
+void CustomRectangleShape::select()
+{
+    is_selected_ = true;
+}
+
+void CustomRectangleShape::unselect()
+{
+    is_selected_ = false;
+}
+
+void CustomRectangleShape::toggleSelection()
+{
+    is_selected_ = !is_selected_;
+}
+
+bool CustomRectangleShape::isClicked(const sf::Vector2i &mouse_position) const
+{
+    sf::FloatRect rectangle_bounds = getGlobalBounds();
+
+    if(mouse_position.x >= rectangle_bounds.left &&
+       mouse_position.x <= rectangle_bounds.left+rectangle_bounds.width &&
+       mouse_position.y >= rectangle_bounds.top &&
+       mouse_position.y <= rectangle_bounds.top+rectangle_bounds.height
+      )
+    {
+        return true;
+    }
+    else
+    {
+        return false;
     }
 }

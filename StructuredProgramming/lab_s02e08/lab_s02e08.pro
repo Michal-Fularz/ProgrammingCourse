@@ -5,7 +5,7 @@ CONFIG -= qt
 
 SOURCES += \
         CustomRectangleShape.cpp \
-        main.cpp
+        lab_s02e08.cpp
 
 INCLUDEPATH += "C:/SFML-2.5.1/include"
 
