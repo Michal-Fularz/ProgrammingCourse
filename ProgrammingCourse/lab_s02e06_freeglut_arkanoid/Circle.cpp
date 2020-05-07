@@ -10,16 +10,16 @@ using namespace MF;
 
 Circle::Circle(double radius, double red, double green, double blue)
 	: Physics(),
-	m_size_radius(radius)
+	radius_(radius)
 {
 	SetBorders(
-		-m_size_radius, -m_size_radius,
-		m_size_radius, m_size_radius
+		-radius_, -radius_,
+		radius_, radius_
 		);
 
-	m_colour_red = red;
-	m_colour_green = green;
-	m_colour_blue = blue;
+	colour_red_ = red;
+	colour_green_ = green;
+	colour_blue_ = blue;
 }
 
 Circle::~Circle()
@@ -28,14 +28,14 @@ Circle::~Circle()
 
 void Circle::Draw()
 {
-	if (m_flag_show)
+	if (flag_show_)
 	{
 		glPushMatrix();
 		{
-			glTranslated(m_position_x, m_position_y, 0.0);
-			glRotated(m_rotation_z, 0.0, 0.0, 1.0);
+			glTranslated(position_x_, position_y_, 0.0);
+			glRotated(rotation_z_, 0.0, 0.0, 1.0);
 
-			glColor3d(m_colour_red, m_colour_green, m_colour_blue);
+			glColor3d(colour_red_, colour_green_, colour_blue_);
 
 			glBegin(GL_TRIANGLE_FAN);
 			{
@@ -46,7 +46,7 @@ void Circle::Draw()
 					// i - degInRad
 
 					double degInRad = i*M_PI / 180;
-					glVertex2f(cos(degInRad)*m_size_radius, sin(degInRad)*m_size_radius);
+					glVertex2f(cos(degInRad)*radius_, sin(degInRad)*radius_);
 				}
 			}
 			glEnd();

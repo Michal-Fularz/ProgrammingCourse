@@ -40,8 +40,8 @@ void Physics::Update(int current_time) //zmienia polozenie obiektu na podstawie 
 	double v_x, v_y;
 	v_x = m_v*cos(m_alfa_v / 180.0*M_PI);
 	v_y = m_v*sin(m_alfa_v / 180.0*M_PI);
-	m_position_x = m_position_x + v_x*delta_t + 0.5*m_g*cos(m_alfa_g / 180.0*M_PI)*delta_t*delta_t;
-	m_position_y = m_position_y + v_y*delta_t + 0.5*m_g*sin(m_alfa_g / 180.0*M_PI)*delta_t*delta_t;
+	position_x_ = position_x_ + v_x*delta_t + 0.5*m_g*cos(m_alfa_g / 180.0*M_PI)*delta_t*delta_t;
+	position_y_ = position_y_ + v_y*delta_t + 0.5*m_g*sin(m_alfa_g / 180.0*M_PI)*delta_t*delta_t;
 
 	//aktualizacja predkosci
 	v_x = v_x + m_g*cos(m_alfa_g / 180.0*M_PI)*delta_t;
@@ -78,44 +78,44 @@ bool Physics::Collision(const Physics& X) //wykrywanie kolizji z innym obiektem 
 	//jesli wystepuje kolizja to przynajmniej jeden z wierzcholkow musi zawierac sie wewnatrz
 	//sprawdzenie czy ktorys z wierzcholkow obiektu nie zawiera sie w obiekcie sprawdzanym
 	bool flagCollision = false;
-	if (IsInRectangle(m_position_x + m_border.bottom_left_corner_x,
-		m_position_y + m_border.bottom_left_corner_y, X) == 1)
+	if (IsInRectangle(position_x_ + m_border.bottom_left_corner_x,
+		position_y_ + m_border.bottom_left_corner_y, X) == 1)
 	{
 		flagCollision = true;
 	}
-	else if (IsInRectangle(m_position_x + m_border.bottom_left_corner_x,
-		m_position_y + m_border.top_right_y, X) == 1)
+	else if (IsInRectangle(position_x_ + m_border.bottom_left_corner_x,
+		position_y_ + m_border.top_right_y, X) == 1)
 	{
 		flagCollision = true;
 	}
-	else if (IsInRectangle(m_position_x + m_border.top_right_x,
-		m_position_y + m_border.top_right_y, X) == 1)
+	else if (IsInRectangle(position_x_ + m_border.top_right_x,
+		position_y_ + m_border.top_right_y, X) == 1)
 	{
 		flagCollision = true;
 	}
-	else if (IsInRectangle(m_position_x + m_border.top_right_x,
-		m_position_y + m_border.bottom_left_corner_y, X) == 1)
+	else if (IsInRectangle(position_x_ + m_border.top_right_x,
+		position_y_ + m_border.bottom_left_corner_y, X) == 1)
 	{
 		flagCollision = true;
 	}
 	//odworcenie sprawdzania 
-	else if (IsInRectangle(X.m_position_x + X.m_border.bottom_left_corner_x,
-		X.m_position_y + X.m_border.bottom_left_corner_y, *this) == 1)
+	else if (IsInRectangle(X.position_x_ + X.m_border.bottom_left_corner_x,
+		X.position_y_ + X.m_border.bottom_left_corner_y, *this) == 1)
 	{
 		flagCollision = true;
 	}
-	else if (IsInRectangle(X.m_position_x + X.m_border.bottom_left_corner_x, 
-		X.m_position_y + X.m_border.top_right_y, *this) == 1)
+	else if (IsInRectangle(X.position_x_ + X.m_border.bottom_left_corner_x, 
+		X.position_y_ + X.m_border.top_right_y, *this) == 1)
 	{
 		flagCollision = true;
 	}
-	else if (IsInRectangle(X.m_position_x + X.m_border.top_right_x,
-		X.m_position_y + X.m_border.top_right_y, *this) == 1)
+	else if (IsInRectangle(X.position_x_ + X.m_border.top_right_x,
+		X.position_y_ + X.m_border.top_right_y, *this) == 1)
 	{
 		flagCollision = true;
 	}
-	else if (IsInRectangle(X.m_position_x + X.m_border.top_right_x,
-		X.m_position_y + X.m_border.bottom_left_corner_y, *this) == 1)
+	else if (IsInRectangle(X.position_x_ + X.m_border.top_right_x,
+		X.position_y_ + X.m_border.bottom_left_corner_y, *this) == 1)
 	{
 		flagCollision = true;
 	}
@@ -133,10 +133,10 @@ bool Physics::Collision(const Physics& X) //wykrywanie kolizji z innym obiektem 
 
 bool Physics::IsInRectangle(double _x, double _y, const Physics& X)//wykrywa czy dany punkt (_x,_y) znajduje sie wewnatrz pewnego kwadratu
 {
-	if (((_x < X.m_position_x + X.m_border.top_right_x) &&
-		(_x > X.m_position_x + X.m_border.bottom_left_corner_x)) &&
-		((_y < X.m_position_y + X.m_border.top_right_y) &&
-		(_y > X.m_position_y + X.m_border.bottom_left_corner_y)))
+	if (((_x < X.position_x_ + X.m_border.top_right_x) &&
+		(_x > X.position_x_ + X.m_border.bottom_left_corner_x)) &&
+		((_y < X.position_y_ + X.m_border.top_right_y) &&
+		(_y > X.position_y_ + X.m_border.bottom_left_corner_y)))
 	{
 		return true;
 	}
@@ -169,10 +169,10 @@ double Physics::FindNormal(const Physics& X)//znajduje normalna boku ktory jest 
 {
 	double distances[4];//tablica zawierajaca odleglosc srodka obiektu od bokow, przyjmuje sie ze odbicie nastepuje od boku lezacego najblizej srodka obiektu
 	int min_idx = 0;
-	distances[0] = Distance(m_position_x, m_position_y, X.m_position_x + X.m_border.bottom_left_corner_x, X.m_position_y + X.m_border.bottom_left_corner_y, X.m_position_x + X.m_border.bottom_left_corner_x, X.m_position_y + X.m_border.top_right_y);
-	distances[1] = Distance(m_position_x, m_position_y, X.m_position_x + X.m_border.bottom_left_corner_x, X.m_position_y + X.m_border.top_right_y, X.m_position_x + X.m_border.top_right_x, X.m_position_y + X.m_border.top_right_y);
-	distances[2] = Distance(m_position_x, m_position_y, X.m_position_x + X.m_border.top_right_x, X.m_position_y + X.m_border.top_right_y, X.m_position_x + X.m_border.top_right_x, X.m_position_y + X.m_border.bottom_left_corner_y);
-	distances[3] = Distance(m_position_x, m_position_y, X.m_position_x + X.m_border.top_right_x, X.m_position_y + X.m_border.bottom_left_corner_y, X.m_position_x + X.m_border.bottom_left_corner_x, X.m_position_y + X.m_border.bottom_left_corner_y);
+	distances[0] = Distance(position_x_, position_y_, X.position_x_ + X.m_border.bottom_left_corner_x, X.position_y_ + X.m_border.bottom_left_corner_y, X.position_x_ + X.m_border.bottom_left_corner_x, X.position_y_ + X.m_border.top_right_y);
+	distances[1] = Distance(position_x_, position_y_, X.position_x_ + X.m_border.bottom_left_corner_x, X.position_y_ + X.m_border.top_right_y, X.position_x_ + X.m_border.top_right_x, X.position_y_ + X.m_border.top_right_y);
+	distances[2] = Distance(position_x_, position_y_, X.position_x_ + X.m_border.top_right_x, X.position_y_ + X.m_border.top_right_y, X.position_x_ + X.m_border.top_right_x, X.position_y_ + X.m_border.bottom_left_corner_y);
+	distances[3] = Distance(position_x_, position_y_, X.position_x_ + X.m_border.top_right_x, X.position_y_ + X.m_border.bottom_left_corner_y, X.position_x_ + X.m_border.bottom_left_corner_x, X.position_y_ + X.m_border.bottom_left_corner_y);
 
 	//poszukiwanie minimalnej wartosci Distancei
 	for (int i = 1; i < 4; i++)

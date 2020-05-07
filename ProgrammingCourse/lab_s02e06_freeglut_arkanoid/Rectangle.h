@@ -13,7 +13,7 @@ namespace MF
 		void Draw();
 
 	private:
-		double m_size_width;
-		double m_size_height;
+		double width_;
+		double height_;
 	};
 }

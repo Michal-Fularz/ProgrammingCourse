@@ -14,7 +14,7 @@ namespace MF
 		void Draw();
 
 	private:
-		double m_size_radius;
+		double radius_;
 	};
 }
 

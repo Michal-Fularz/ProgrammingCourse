@@ -18,15 +18,15 @@ namespace MF
 		virtual void Draw() = 0;
 
 	protected:
-		double m_position_x;
-		double m_position_y;
+		double position_x_;
+		double position_y_;
 
-		double m_rotation_z;
+		double rotation_z_;
 
-		double m_colour_red;
-		double m_colour_green;
-		double m_colour_blue;
+		double colour_red_;
+		double colour_green_;
+		double colour_blue_;
 
-		bool m_flag_show;
+		bool flag_show_;
 	};
 }
