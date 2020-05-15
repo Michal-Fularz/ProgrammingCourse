@@ -1,8 +1,9 @@
+#include <exception>
 #include <iostream>
 #include <memory>
 
-#include <SFML/Window.hpp>
 #include <SFML/Graphics.hpp>
+#include <SFML/Window.hpp>
 
 void ex_1()
 {
@@ -88,8 +89,6 @@ void ex_4()
     std::cout << "Name: " << skoda_superb_as_vehicle->name() << std::endl;
     //std::cout << "Has ABS: " << skoda_superb_as_vehicle->has_abs() << std::endl;
 }
-
-#include <exception>
 
 void ex_5()
 {
@@ -266,9 +265,9 @@ int main()
 {
     std::cout << "Hello lab09!" << std::endl;
 
-//    ex_1();
-//    ex_2();
-//    ex_3();
+    ex_1();
+    ex_2();
+    ex_3();
     ex_4();
     ex_5();
     ex_6();
