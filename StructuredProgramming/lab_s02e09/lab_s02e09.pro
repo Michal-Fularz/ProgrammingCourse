@@ -4,7 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
-        main.cpp
+    lab_s02e09_main.cpp
 
 INCLUDEPATH += "C:/SFML-2.5.1/include"
 
