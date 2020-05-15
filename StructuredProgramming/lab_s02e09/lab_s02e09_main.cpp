@@ -5,6 +5,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 
+#include "lab_s02e09_MF.h"
+
 void ex_1()
 {
     //  2,147,483,647
@@ -40,47 +42,6 @@ void ex_3()
     std::getchar();
 }
 
-class Vehicle {
-public:
-    std::string name() { return name_; }
-    int number_of_wheels() { return number_of_wheels_; }
-    std::string propulsion_type() { return propulsion_type_; }
-    double max_speed() { return max_speed_; }
-
-    virtual ~Vehicle() = default;
-
-protected:
-    Vehicle(const std::string &name, int number_of_wheels,
-            const std::string &propulsion_type, double max_speed)
-        : name_(name), number_of_wheels_(number_of_wheels),
-          propulsion_type_(propulsion_type), max_speed_(max_speed) {}
-
-    std::string name_;
-    int number_of_wheels_;
-    std::string propulsion_type_;
-    double max_speed_;
-};
-
-class Car : public Vehicle {
-public:
-    Car(const std::string &name, const std::string &propulsion_type,
-        double max_speed, bool has_abs)
-        : Vehicle(name, 4, propulsion_type, max_speed),
-          has_abs_(has_abs) {}
-
-    bool has_abs() { return has_abs_; }
-
-private:
-    bool has_abs_;
-};
-
-class Bike : public Vehicle {
-public:
-    Bike()
-        : Vehicle("Fuji", 4, "pedals", 2.0)
-    {}
-};
-
 void ex_4()
 {
     std::unique_ptr<Vehicle> skoda_superb_as_vehicle = std::make_unique<Car>(
@@ -105,77 +66,6 @@ void ex_5()
         }
 
     }
-}
-
-class AnimatedSprite : public sf::Sprite {
-public:
-    AnimatedSprite() : sf::Sprite() {
-    }
-
-    void add_animation_frame(const sf::IntRect &frame) {
-        frames_.emplace_back(frame);
-        current_frame_ = frames_.begin();
-    }
-
-    void step(const sf::Time &elapsed) {
-        elapsed_accumulator_ += elapsed.asSeconds();
-        while (elapsed_accumulator_ >= 1.0/fps) {
-            elapsed_accumulator_ -= 1.0/fps;
-            if (!frames_.empty()) {
-//                setTextureRect(frames_[current_frame_]);
-//                current_frame_ = (current_frame_ + 1) % frames_.size();
-                setTextureRect(*current_frame_);
-                current_frame_++;
-                if(current_frame_ == frames_.end())
-                {
-                    current_frame_ = frames_.begin();
-                }
-            }
-        }
-    }
-
-private:
-    std::vector<sf::IntRect> frames_;
-    std::vector<sf::IntRect>::iterator current_frame_ = frames_.begin();
-//    size_t current_frame_ = 0;
-    float elapsed_accumulator_ = 0;
-    float fps = 10;
-};
-
-std::vector<std::unique_ptr<sf::Drawable>> create_shapes()
-{
-    std::vector<std::unique_ptr<sf::Drawable>> shapes;
-
-    std::unique_ptr<sf::CircleShape> circle = std::make_unique<sf::CircleShape>(100.0);
-    circle->setPosition(100.0, 300.0);
-    circle->setFillColor(sf::Color(100, 250, 50));
-    shapes.emplace_back(std::move(circle));
-
-    std::unique_ptr<sf::RectangleShape> rectangle = std::make_unique<sf::RectangleShape>(sf::Vector2f(120.0, 60.0));
-    rectangle->setPosition(500.0, 400.0);
-    rectangle->setFillColor(sf::Color(100, 50, 250));
-    shapes.emplace_back(std::move(rectangle));
-
-    std::unique_ptr<sf::ConvexShape> triangle = std::make_unique<sf::ConvexShape>();
-    triangle->setPointCount(3);
-    triangle->setPoint(0, sf::Vector2f(0.0, 0.0));
-    triangle->setPoint(1, sf::Vector2f(0.0, 100.0));
-    triangle->setPoint(2, sf::Vector2f(140.0, 40.0));
-    triangle->setOutlineColor(sf::Color::Red);
-    triangle->setOutlineThickness(5);
-    triangle->setPosition(600.0, 100.0);
-    shapes.emplace_back(std::move(triangle));
-
-    return shapes;
-}
-
-sf::Texture loadTexture(const std::string &filename_with_path)
-{
-    sf::Texture texture;
-    if (!texture.loadFromFile(filename_with_path)) {
-        std::cerr << "Could not load texture" << std::endl;
-    }
-    return texture;
 }
 
 void ex_6()

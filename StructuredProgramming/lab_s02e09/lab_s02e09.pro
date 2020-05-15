@@ -4,6 +4,7 @@ CONFIG -= app_bundle
 CONFIG -= qt
 
 SOURCES += \
+    lab_s02e09_MF.cpp \
     lab_s02e09_main.cpp
 
 INCLUDEPATH += "C:/SFML-2.5.1/include"
@@ -14,3 +15,6 @@ CONFIG(debug, debug|release){
 } else {
     LIBS += -lsfml-audio -lsfml-graphics -lsfml-network -lsfml-system -lsfml-window
 }
+
+HEADERS += \
+    lab_s02e09_MF.h
