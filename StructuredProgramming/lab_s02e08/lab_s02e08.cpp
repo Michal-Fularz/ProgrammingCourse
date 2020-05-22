@@ -41,6 +41,8 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "PSiO Lab08");
     window.setFramerateLimit(60);
 
+    std::cout << "hello git";
+
     CustomRectangleShape my_rectangle(
                 sf::Vector2f(120.0, 60.0),
                 sf::Vector2f(120.0, 60.0)
