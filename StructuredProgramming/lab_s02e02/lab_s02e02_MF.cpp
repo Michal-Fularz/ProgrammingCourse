@@ -34,3 +34,18 @@ bool is_palindrome(std::string word)
     }
     return true;
 }
+
+std::vector<size_t> find_all(const std::string& text, char sign)
+{
+    std::vector<size_t> indices_of_sign;
+
+    size_t index_of_sign = text.find(sign);
+
+    while(index_of_sign != std::string::npos)
+    {
+        indices_of_sign.emplace_back(index_of_sign);
+        index_of_sign = text.find(sign, index_of_sign+1);
+    }
+
+    return indices_of_sign;
+}

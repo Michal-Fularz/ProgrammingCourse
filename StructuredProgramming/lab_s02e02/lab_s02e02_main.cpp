@@ -28,6 +28,22 @@ void ex_1()
     std::cout << std::endl << std::endl;
 }
 
+void ex_2()
+{
+    std::cout << "Exercise 2" << std::endl;
+
+    std::string input = "Ala ma kota";
+
+    std::vector<size_t> pos = find_all(input, 'a'); // wynik: {2, 5, 10}
+
+    std::cout << "{";
+    for(const auto& p: pos)
+    {
+        std::cout << p << ", ";
+    }
+    std::cout << "}" << std::endl;
+}
+
 void sort_ex_6(std::vector<int> a)
 {
     // this is just an implementation of bubble sorting algorithm based on the diagram
@@ -106,12 +122,14 @@ void ex_8()
     std::cout << std::endl << std::endl;
 }
 
+
 int main()
 {
     std::cout << "Hello lab 2!" << std::endl;
 
-    ex_1();
-    ex_8();
+//    ex_1();
+    ex_2();
+//    ex_8();
 
     // getline allows reading input with spaces
     std::string text;

@@ -16,3 +16,5 @@ struct Exchange_rate
 void sort_usd(std::vector<Exchange_rate>& rates);
 
 bool is_palindrome(std::string word);
+
+std::vector<size_t> find_all(const std::string& text, char sign);
