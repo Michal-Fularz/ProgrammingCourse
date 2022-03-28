@@ -105,7 +105,6 @@ bool czy_jest_gruszka_for(const Koszyk &koszyk)
 
 bool czy_same_owoce(const Koszyk &koszyk)
 {
-    std::string name_to_compare = "Gruszka";
     return std::all_of(
                 koszyk.begin(),
                 koszyk.end(),
@@ -191,7 +190,10 @@ void usun_zaczynajace_sie_od(Koszyk &koszyk, char litera)
         return std::toupper(r.nazwa[0]) == std::toupper(litera);
     };
 
-    koszyk.erase(std::remove_if(koszyk.begin(), koszyk.end(), czy_zaczyna), koszyk.end());
+    koszyk.erase(
+        std::remove_if(koszyk.begin(), koszyk.end(), czy_zaczyna),
+        koszyk.end()
+    );
 }
 
 bool operator<(const Roslina &r1, const Roslina &r2)
