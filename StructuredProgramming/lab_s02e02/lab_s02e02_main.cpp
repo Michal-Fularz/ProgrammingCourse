@@ -70,6 +70,18 @@ void sort_ex_6(std::vector<int> a)
     while(flaga_zamiana);
 }
 
+void ex_7()
+{
+    std::cout << "Exercise 7" << std::endl;
+
+    std::vector<double> values {1, 2, 6, 8, 9, 11, 15};
+
+    int index = binary_search(values, 5);
+    std::cout << "Index of element with a value 5: " << index << std::endl;
+}
+
+#include <algorithm>
+
 void ex_8()
 {
     std::cout << "Exercise 8" << std::endl;
@@ -120,6 +132,11 @@ void ex_8()
         rates[i].print();
     }
     std::cout << std::endl << std::endl;
+
+    int index = binary_search(rates, 3.9011);
+    std::cout << "USD rate of " << 3.9011 << " index: " << index << std::endl;
+    rates[index].print();
+    std::cout << std::endl << std::endl;
 }
 
 
@@ -127,9 +144,10 @@ int main()
 {
     std::cout << "Hello lab 2!" << std::endl;
 
-//    ex_1();
+    ex_1();
     ex_2();
-//    ex_8();
+    ex_7();
+    ex_8();
 
     // getline allows reading input with spaces
     std::string text;
