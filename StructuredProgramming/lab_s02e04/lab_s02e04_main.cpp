@@ -24,25 +24,11 @@ void ex_7()
     }
 }
 
-std::tuple<char, int, bool> mytuple() {
-    char a = 'a';
-    int i = 123;
-    bool b = true;
-    return {a, i, b};// lub std::make_tuple(a, i, b);
-}
-
-void ex_tuple()
-{
-    auto [a, i, b] = mytuple();
-    std::cout << "a: " << a << ", i: " << i <<  ", b: " << b << std::endl;
-}
-
 void ex_8()
 {
     std::cout << std::endl << "ex_8" << std::endl;
 
-    std::cout << std::endl << "Zad 8" << std::endl;
-    std::fstream input_file("numeryTelefonowGoogle.html", std::ios::in);
+    std::fstream input_file("./../lab_s02e04/numeryTelefonowGoogle.html", std::ios::in);
     if(input_file.is_open())
     {
           std::stringstream str_stream;
@@ -59,11 +45,24 @@ void ex_8()
     }
 }
 
+std::tuple<char, int, bool> mytuple() {
+    char a = 'a';
+    int i = 123;
+    bool b = true;
+    return {a, i, b};// lub std::make_tuple(a, i, b);
+}
+
+void ex_tuple()
+{
+    auto [a, i, b] = mytuple();
+    std::cout << "a: " << a << ", i: " << i <<  ", b: " << b << std::endl;
+}
+
 void ex_final()
 {
-    std::cout << std::endl << "Zadanie koncowe" << std::endl;
+    std::cout << std::endl << "Final excersise" << std::endl;
     std::map<std::string, int> word_statistics;
-    std::fstream input_file("license.txt", std::ios::in);
+    std::fstream input_file("./../data/lab_s02e04/license.txt", std::ios::in);
     if(input_file.is_open())
     {
         while (!input_file.eof())
@@ -143,6 +142,7 @@ void ex_homework()
     }
 }
 
+
 int main()
 {
     std::cout << "Hello lab04!" << std::endl;
@@ -215,8 +215,9 @@ int main()
         }
 
     ex_7();
-    ex_tuple();
     ex_8();
+
+    ex_tuple();
 
     {
         std::cout << std::endl;
@@ -263,8 +264,6 @@ int main()
     ex_final();
 
     ex_homework();
-
-
 
     return 0;
 }
