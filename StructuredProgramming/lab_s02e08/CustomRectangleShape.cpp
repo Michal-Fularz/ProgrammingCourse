@@ -43,32 +43,20 @@ void CustomRectangleShape::animate(const sf::Time &elapsed)
         sf::FloatRect rectangle_bounds = getGlobalBounds();
 
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Up)) {
-            if(rectangle_bounds.top > bounds_.top)
-            {
-                move(
-                    0,
-                    -100*elapsed.asSeconds()
-                );
+            if(rectangle_bounds.top > bounds_.top) {
+                move(0, -100*elapsed.asSeconds());
             }
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Down)) {
-            if(rectangle_bounds.top+rectangle_bounds.height < bounds_.bottom)
-            move(
-                0,
-                100*elapsed.asSeconds()
-            );
+            if(rectangle_bounds.top+rectangle_bounds.height < bounds_.bottom){
+                move(0, 100*elapsed.asSeconds());
+            }
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-            move(
-                -100*elapsed.asSeconds(),
-                0
-            );
+            move(-100*elapsed.asSeconds(), 0);
         }
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-            move(
-                100*elapsed.asSeconds(),
-                0
-            );
+            move(100*elapsed.asSeconds(), 0);
         }
     }
 }

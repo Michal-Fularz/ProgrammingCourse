@@ -41,15 +41,13 @@ int main()
     sf::RenderWindow window(sf::VideoMode(800, 600), "PSiO Lab08");
     window.setFramerateLimit(60);
 
-    std::cout << "hello git";
-
     CustomRectangleShape my_rectangle(
                 sf::Vector2f(120.0, 60.0),
                 sf::Vector2f(120.0, 60.0)
     );
     my_rectangle.setFillColor(sf::Color(100, 50, 250));
     my_rectangle.setSpeed(100, 150, 10); // predkosc x, y, obrotowa
-    my_rectangle.setBounds(0, window.getSize().x, 0, window.getSize().y);
+    my_rectangle.setBounds(200, window.getSize().x-200, 200, window.getSize().y-200);
     // NOTE(MF): test how the following line affects the program
     //my_rectangle.setBounds(sf::IntRect(10, 10, 400, 400));
 
@@ -88,6 +86,7 @@ int main()
                     my_rectangle.toggleSelection();
                 }
             }
+
             if (event.type == sf::Event::MouseButtonPressed) {
                 if(event.mouseButton.button == sf::Mouse::Left) {
                     sf::Vector2i mouse_pos = sf::Mouse::getPosition(window);
